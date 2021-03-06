@@ -1,0 +1,17 @@
+.header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding:2% 0 2% 0;
+    margin:0;
+    background-color:orange;
+    grid-area: header;
+}
+
+.header-brand {
+    display: flex;
+    
+}
+
+.search {
+}

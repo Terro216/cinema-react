@@ -1,0 +1,4 @@
+.sidebar-wrapper {
+    background-color:red;
+    grid-area: sidebar;
+}
