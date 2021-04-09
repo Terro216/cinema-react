@@ -7,3 +7,12 @@
     "main main main sidebar"
     "footer footer footer footer";
 }
+
+.card {
+  max-width: 155px;
+  max-height: 300px;
+}
+.card img {
+  max-width:100%;
+  max-height:60%;
+}
