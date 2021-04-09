@@ -3,14 +3,30 @@ import Header from './components/header.js';
 import Main from './components/main.js';
 import Sidebar from './components/sidebar.js';
 import Footer from './components/footer.js';
+import Film from './components/film.js';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
+      
+    <Router>
       <Header />
-      <Main />
+      <Switch>
+      <Route exact path="/">
+          <Main />
+      </Route>
+      <Route path="/film/:id">
+          <Film />
+      </Route>
+      </Switch>
       <Sidebar />
       <Footer />
+    </Router>
     </div>
   );
 }
