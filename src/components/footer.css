@@ -1,5 +1,9 @@
 .footer-wrapper {
-    background-color: green;
+    background-color: #2d323c;
     grid-area: footer;
     padding:2% 0 2% 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
