@@ -4,6 +4,7 @@ import Main from './components/main.js';
 import Sidebar from './components/sidebar.js';
 import Footer from './components/footer.js';
 import Film from './components/film.js';
+import Search from './components/search.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,6 +23,9 @@ function App() {
       </Route>
       <Route path="/film/:id">
           <Film />
+      </Route>
+      <Route path="/search/:keyword">
+          <Search />
       </Route>
       </Switch>
       <Sidebar />

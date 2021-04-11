@@ -3,7 +3,7 @@ import './footer.css';
 function Footer() {
     return(
         <div className="footer-wrapper">
-            footer
+            made by i l y a m e d
         </div>
     );
 }
