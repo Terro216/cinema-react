@@ -28,7 +28,8 @@ function App() {<Search />
           <Film />
       </Route>
       <Route path="/search?type=:type&keyword=:keyword" children={({ location }) => (console.log( QueryString.parse(location)))//<Main type={query.type} />
-      }> {//ДОДЕЛАТЬ НОРМАЛЬНЫЙ РОУТИНГ}
+      }> {//ДОДЕЛАТЬ НОРМАЛЬНЫЙ РОУТИНГ
+      }
       </Route>
       </Switch>
       <Sidebar />
