@@ -4,15 +4,17 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link,
+    useParams
   } from "react-router-dom";
   import getFilm from '../scripts/getFilm.js'
 
 function Main(props) {
     const [page,changePage] = useState(1);
-    let maxPages;console.log(props.type,props.keyword);
+    let maxPages;
     useEffect(() => {
-    maxPages = getFilm(page,props.type,props.keyword);
+    console.log(props.location,props.match.params.type,props.match.params.keyword);//,props.type,props.keyword);
+    maxPages = getFilm(page,props.match.params.type,props.match.params.keyword)//page,props.type,props.keyword);
     });
 
     return(
