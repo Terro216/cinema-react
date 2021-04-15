@@ -10,27 +10,24 @@ import * as QueryString from "query-string"
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route, Redirect,
+  useLocation
 } from "react-router-dom";
-import { queryAllByAltText } from '@testing-library/dom';
 
-function App() {<Search />
+function App() {
+<Search />
   return (
     <div className="App">
       
     <Router>
       <Header />
       <Switch>
-      <Route exact path="/" children={<Main type='top' keyword='TOP_250_BEST_FILMS'/>}>
-          
-      </Route>
+      <Redirect exact from="/" to="/top/TOP_250_BEST_FILMS" component={Main} />
+      
       <Route path="/film/:id">
           <Film />
       </Route>
-      <Route path="/search?type=:type&keyword=:keyword" children={({ location }) => (console.log( QueryString.parse(location)))//<Main type={query.type} />
-      }> {//ДОДЕЛАТЬ НОРМАЛЬНЫЙ РОУТИНГ
-      }
-      </Route>
+      <Route path="/:type/:keyword" component={Main}/>
       </Switch>
       <Sidebar />
       <Footer />
