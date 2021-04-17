@@ -1,4 +1,5 @@
-import './header.css';
+import './header.scss';
+import logo from '../logo.svg';
 import { useState } from 'react';
 import {
     BrowserRouter as Router,
@@ -9,14 +10,10 @@ function Header() {
     const [search,setSearch] = useState(' ');
     return(
         <div className="header-wrapper">
-            <div className="header-brand"><img className="logo" alt="logo"></img> CINEMA</div>
-            <div className="header-pages">
-                Новинки
-                ТОП-100 фильмов
-                
-            </div>
-            <div className="search"><input type="text" className="searchBar" placeholder="Название..." onChange={()=>{let word = document.getElementsByClassName('searchBar')[0].value;  setSearch(word)}}></input>
-            <Link to={`/search/${search}`}>Поиск</Link>
+            <div className="header-brand"><img className="logo" alt="logo" src={logo}></img><Link to="/"><span>CINEMA</span></Link></div>
+            <div className="search">
+            <input type="text" className="searchBar" placeholder="Название..." onChange={()=>{let word = document.getElementsByClassName('searchBar')[0].value;  setSearch(word)}}></input>
+            <Link className="searchButton" to={`/search/${search}`}>Поиск</Link>
             </div>
         </div>
     );

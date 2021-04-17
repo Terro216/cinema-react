@@ -1,20 +1,17 @@
-import './App.css';
+import './App.scss';
 import Header from './components/header.js';
 import Main from './components/main.js';
 import Sidebar from './components/sidebar.js';
 import Footer from './components/footer.js';
 import Film from './components/film.js';
-import Search from './components/search.js';
-import * as QueryString from "query-string"
-
 import {
   HashRouter,
   Switch,
-  Route, Redirect
+  Route, 
+  Redirect
 } from "react-router-dom";
 
 function App() {
-<Search />
   return (
     <div className="App">
       
@@ -23,9 +20,7 @@ function App() {
       <Switch>
       <Redirect exact from="/" to="/top/TOP_250_BEST_FILMS" component={Main} />
       
-      <Route path="/film/:id">
-          <Film />
-      </Route>
+      <Route path="/film/:id" component={Film}/>
       <Route path="/:type/:keyword" component={Main}/>
       </Switch>
       <Sidebar />
