@@ -13,7 +13,6 @@ function Main(props) {
     const [page,changePage] = useState(1);
     let maxPages;
     useEffect(() => {
-    console.log(props.location,props.match.params.type,props.match.params.keyword);//,props.type,props.keyword);
     maxPages = getFilm(page,props.match.params.type,props.match.params.keyword)//page,props.type,props.keyword);
     });
 

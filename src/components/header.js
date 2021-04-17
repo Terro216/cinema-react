@@ -16,8 +16,6 @@ function Header() {
                 
             </div>
             <div className="search"><input type="text" className="searchBar" placeholder="Название..." onChange={()=>{let word = document.getElementsByClassName('searchBar')[0].value;  setSearch(word)}}></input>
-            {//<Link to={`/search/${//search}`}>Поиск</Link>
-            }
             <Link to={`/search/${search}`}>Поиск</Link>
             </div>
         </div>
