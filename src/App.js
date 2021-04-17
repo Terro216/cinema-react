@@ -8,10 +8,9 @@ import Search from './components/search.js';
 import * as QueryString from "query-string"
 
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
-  Route, Redirect,
-  useLocation
+  Route, Redirect
 } from "react-router-dom";
 
 function App() {
@@ -19,7 +18,7 @@ function App() {
   return (
     <div className="App">
       
-    <Router>
+    <Router basename="/">
       <Header />
       <Switch>
       <Redirect exact from="/" to="/top/TOP_250_BEST_FILMS" component={Main} />
