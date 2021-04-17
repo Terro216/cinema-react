@@ -1,12 +1,5 @@
-import './main.css';
+import './main.scss';
 import { useEffect, useState } from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useParams
-  } from "react-router-dom";
   import getFilm from '../scripts/getFilm.js'
 
 function Main(props) {
@@ -21,7 +14,7 @@ function Main(props) {
             <div className="cards"></div>
             <div className="pageListWrapper">
                 <button onClick={()=>{(page-1)>=1?changePage(page-1):console.log()}} className="pageListButton"> Назад </button>
-                <button onClick={()=>changePage(1)} className="pagListButton"> Первая страница </button>
+                <button onClick={()=>changePage(1)} className="pageListButton"> Первая страница </button>
                 <button onClick={()=>{(page+1>maxPages)?changePage(1):changePage(page+1)}}  className="pageListButton"> Вперед </button>
             </div>
         </div>

@@ -1,6 +1,6 @@
 {
   "name": "cinema-react",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "homepage": "https://terro216.github.io/cinema-react/",
   "dependencies": {
@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.1",
     "gh-pages": "^3.1.0",
+    "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",

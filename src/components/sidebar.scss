@@ -1,0 +1,15 @@
+.sidebar-wrapper {
+    background-color:#2d323c;
+    border-left: 1px solid black;
+    grid-area: sidebar;
+    .genre-card,.sidebar-header {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        border:1px solid white;
+        color:white;
+    }
+    .sidebar-header {
+        background-color:rgb(204, 162, 107);
+    }
+}

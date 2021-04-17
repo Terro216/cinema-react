@@ -3,6 +3,11 @@
     grid-area: main;
     width:100%;height:100%;
     padding:2% 0 2% 0;
+    .pageListButton{
+        height: 100%;
+        background: rgb(179, 230, 247);
+        border-radius: 5%;
+    }
 }
 
 .cards {
