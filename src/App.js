@@ -8,7 +8,7 @@ import Search from './components/search.js';
 import * as QueryString from "query-string"
 
 import {
-  HashRouter as Router,
+  HashRouter,
   Switch,
   Route, Redirect
 } from "react-router-dom";
@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       
-    <Router basename="/">
+    <HashRouter basename="/">
       <Header />
       <Switch>
       <Redirect exact from="/" to="/top/TOP_250_BEST_FILMS" component={Main} />
@@ -30,7 +30,7 @@ function App() {
       </Switch>
       <Sidebar />
       <Footer />
-    </Router>
+    </HashRouter>
     </div>
   );
 }
