@@ -1,22 +1,24 @@
 {
   "files": {
-    "main.css": "/cinema-react/static/css/main.2763b565.chunk.css",
-    "main.js": "/cinema-react/static/js/main.3bc1ed91.chunk.js",
-    "main.js.map": "/cinema-react/static/js/main.3bc1ed91.chunk.js.map",
-    "runtime-main.js": "/cinema-react/static/js/runtime-main.c0f47625.js",
-    "runtime-main.js.map": "/cinema-react/static/js/runtime-main.c0f47625.js.map",
-    "static/js/2.e59b6b64.chunk.js": "/cinema-react/static/js/2.e59b6b64.chunk.js",
-    "static/js/2.e59b6b64.chunk.js.map": "/cinema-react/static/js/2.e59b6b64.chunk.js.map",
-    "static/js/3.0a48c00a.chunk.js": "/cinema-react/static/js/3.0a48c00a.chunk.js",
-    "static/js/3.0a48c00a.chunk.js.map": "/cinema-react/static/js/3.0a48c00a.chunk.js.map",
+    "main.css": "/cinema-react/static/css/main.76baf950.chunk.css",
+    "main.js": "/cinema-react/static/js/main.d2f2d367.chunk.js",
+    "main.js.map": "/cinema-react/static/js/main.d2f2d367.chunk.js.map",
+    "runtime-main.js": "/cinema-react/static/js/runtime-main.a4cfca9f.js",
+    "runtime-main.js.map": "/cinema-react/static/js/runtime-main.a4cfca9f.js.map",
+    "static/js/2.099da3ef.chunk.js": "/cinema-react/static/js/2.099da3ef.chunk.js",
+    "static/js/2.099da3ef.chunk.js.map": "/cinema-react/static/js/2.099da3ef.chunk.js.map",
+    "static/js/3.6d3da05b.chunk.js": "/cinema-react/static/js/3.6d3da05b.chunk.js",
+    "static/js/3.6d3da05b.chunk.js.map": "/cinema-react/static/js/3.6d3da05b.chunk.js.map",
     "index.html": "/cinema-react/index.html",
-    "static/css/main.2763b565.chunk.css.map": "/cinema-react/static/css/main.2763b565.chunk.css.map",
-    "static/js/2.e59b6b64.chunk.js.LICENSE.txt": "/cinema-react/static/js/2.e59b6b64.chunk.js.LICENSE.txt"
+    "static/css/main.76baf950.chunk.css.map": "/cinema-react/static/css/main.76baf950.chunk.css.map",
+    "static/js/2.099da3ef.chunk.js.LICENSE.txt": "/cinema-react/static/js/2.099da3ef.chunk.js.LICENSE.txt",
+    "static/media/logo.10b5322e.svg": "/cinema-react/static/media/logo.10b5322e.svg",
+    "static/media/index.css": "/cinema-react/static/media/vis.0999fa29.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.c0f47625.js",
-    "static/js/2.e59b6b64.chunk.js",
-    "static/css/main.2763b565.chunk.css",
-    "static/js/main.3bc1ed91.chunk.js"
+    "static/js/runtime-main.a4cfca9f.js",
+    "static/js/2.099da3ef.chunk.js",
+    "static/css/main.76baf950.chunk.css",
+    "static/js/main.d2f2d367.chunk.js"
   ]
 }
