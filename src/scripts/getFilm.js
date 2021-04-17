@@ -30,7 +30,7 @@ function getFilm(page,type,keyword) {
             let card = document.createElement('div');
             card.className="card";
             card.innerHTML = `
-            <a href="/film/${data.films[i].filmId}">
+            <a href="#/film/${data.films[i].filmId}">
             <img src='${data.films[i].posterUrlPreview}'></img>
             <br>
             <h3>${data.films[i].nameRu}</h3>
