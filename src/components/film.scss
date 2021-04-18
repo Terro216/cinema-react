@@ -2,5 +2,43 @@
     background-color:white;
     grid-area: main;
     width:100%;height:100%;
-    /*padding:2% 0 2% 0;*/
+    padding-top:5%;
+    .filmHeader {
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .bigPoster {
+            max-width:30%;
+        }
+        .filmName{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        .filmQuote {
+            font-size:0.6em;
+        }}
+        .filmScore {
+            font-size:1.3em;
+            margin-top:2%;
+            display: flex;
+            width:100%;
+            justify-content: space-around;
+        }
+    }
+    .film {
+        margin: 4% 0 4% 0;
+        width:100%;
+        #yohoho {
+            max-width:100%;
+            max-height:100%;
+        }
+    }
+    .filmDescription {
+        text-align:center;
+        font-size:1.3em;
+        padding: 2% 2% 4% 2%;
+        background-color:lightgrey;
+    }
 }

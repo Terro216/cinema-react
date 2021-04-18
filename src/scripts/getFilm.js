@@ -5,6 +5,8 @@ function getFilm(page,type,keyword) {
         req = `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=${keyword}&page=${page}`
     } else if (type==="search") {
         req = `https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${keyword}&page=${page}`
+    } else if (type==='genre') {
+        req = `https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-filters?genre=${keyword}&order=RATING&type=ALL&ratingFrom=0&ratingTo=10&yearFrom=1888&yearTo=2020&page=${page}`
     }
     let request = new Request(req,{
         headers: new Headers({
@@ -33,7 +35,7 @@ function getFilm(page,type,keyword) {
             <a href="#/film/${data.films[i].filmId}">
             <img src='${data.films[i].posterUrlPreview}'></img>
             <br>
-            <h3>${data.films[i].nameRu}</h3>
+            <h3>${data.films[i].nameRu} (${data.films[i].year})</h3>
             </a>`;
             wrapper.appendChild(card);
         }
