@@ -5,6 +5,7 @@ import {
   } from "react-router-dom";
 
 function Film() {
+
     let {id} = useParams();
     useEffect(() => {
             let wrapper = document.getElementsByClassName('film')[0];
@@ -44,20 +45,25 @@ function Film() {
     })
     .then((data) => { 
       document.getElementsByClassName('filmScore')[0].innerHTML=`<div>КиноПоиск: ${data.rating.rating} (${data.rating.ratingVoteCount} шт.)</div><div>IMDB: ${data.rating.ratingImdb}  (${data.rating.ratingImdbVoteCount} шт.)</div> <div>Критики: ${data.rating.ratingFilmCritics} (${data.rating.ratingFilmCriticsVoteCount} шт.)</div>`;
-      data=data.data;console.log(data);
+      data=data.data;
           document.getElementsByClassName('bigPoster')[0].src=data.posterUrl;
-          document.getElementsByClassName('filmName')[0].innerHTML=`${data.nameRu} (${data.year})<br/><br/><i class="filmQuote">&laquo;${data.slogan}&raquo;</i>`;
+          if (data.slogan!==null) {document.getElementsByClassName('filmName')[0].innerHTML=`${data.nameRu} (${data.year})<br/><br/><i class="filmQuote">&laquo;${data.slogan}&raquo;</i>`;} 
+          else {document.getElementsByClassName('filmName')[0].innerHTML=`${data.nameRu} (${data.year})<br/>`;}
           document.getElementsByClassName('filmDescription')[0].innerHTML=`<h3>Про что фильм?</h3><p></p>${data.description}`;
           document.getElementsByClassName('filmOther')[0].innerHTML=`
           Произведен в: <div class="countryAdd"></div>
-          Жанр: <div class="genreAdd"></div>
           `;
-          for (let i=0;i<=data.countries.length;i++) {
-            document.getElementsByClassName('countryAdd')[0].innerHTML+=`${data.countries[i].country}&nbsp; `;
+          for (let i=0;i<data.countries.length;i++) {
+            let zpt;
+            (i+1)===data.countries.length ? zpt='&nbsp;' : zpt=',';
+            document.getElementsByClassName('countryAdd')[0].innerHTML+=`${data.countries[i].country}${zpt} `;
           };
-          for (let i=0;i<=data.genres.length;i++) {
-            document.getElementsByClassName('genreAdd')[0].innerHTML+=`${data.genres[i].genre}&nbsp; `; //ГДЕ ЖАНРЫ ТО
+          for (let i=0;i<data.genres.length;i++) {
+            document.getElementsByClassName('filmGenre')[0].innerHTML+=`<div class="labelOut"><div class="labelIn">${data.genres[i].genre}</div></div> `;
           };
+          for (let i=0;i<data.facts.length;i++){
+            document.getElementsByClassName('spoiler')[0].innerHTML+=`${i+1}. ${data.facts[i]}<p></p>`;
+          }
       })
     .catch((error) => {
         console.log(error);
@@ -71,12 +77,20 @@ function Film() {
           <div className="filmHeader">
             <img className="bigPoster"></img>
             <h1 className="filmName"></h1>
+            <div className="filmGenre"></div>
             <div className="filmScore"></div>
           </div>
           <div className="film"></div>
           <div className="filmDescription"></div>
           <p></p>
           <div className="filmOther"></div>
+          <p></p>
+          <div className="filmFacts" onClick={()=>{document.getElementsByClassName('spoiler')[0].style.visibility='visible'}}>
+            <h3>Интересные факты: (для просмотра нажать сюда. P.S. возможны спойлеры)</h3>
+            <div className="spoiler">
+
+            </div>
+          </div>
         </div>
     );
 }
