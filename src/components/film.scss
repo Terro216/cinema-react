@@ -26,6 +26,33 @@
             width:100%;
             justify-content: space-around;
         }
+        .filmGenre {
+            font-size:1em;
+            margin-top:2%;
+            display: flex;
+            width:100%;
+            justify-content: space-evenly;
+            align-items: center;
+            .labelOut {
+                filter: drop-shadow(5px 6px 3px rgba(50, 50, 50, 1));
+                position: relative;
+                  background: tomato;
+                width:10%;height:50px;
+                clip-path: polygon(100% 0%, 100% 53%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+                background-color: black;
+                filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
+            }
+            .labelIn{
+                clip-path: polygon(100% 0%, 100% 53%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+                display:flex;justify-content: center;align-items: center;
+                position: absolute;
+                top: 3px;
+                left: 3px;
+                right: 3px;
+                bottom: 3px;
+                background-color:rgb(252, 211, 136);
+            }
+        }
     }
     .film {
         margin: 4% 0 4% 0;
@@ -40,5 +67,13 @@
         font-size:1.3em;
         padding: 2% 2% 4% 2%;
         background-color:lightgrey;
+    }
+    .filmFacts {
+        font-size:1em;
+        padding: 2% 2% 4% 2%;
+        background-color:lightyellow;
+        .spoiler {
+            visibility: hidden;
+        }
     }
 }
