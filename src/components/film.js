@@ -5,7 +5,17 @@ import {
   } from "react-router-dom";
 
 function Film() {
-
+  function getXMLDocument(url)  
+  {  
+      let xml;  
+      if(window.XMLHttpRequest)  
+      {  
+          xml=new window.XMLHttpRequest();  
+          xml.open("GET", url, false);  
+          xml.send("");  
+          return xml.responseXML;  
+      }  
+  }  
     let {id} = useParams();
     useEffect(() => {
             let wrapper = document.getElementsByClassName('film')[0];
@@ -48,22 +58,27 @@ function Film() {
       data=data.data;
           document.getElementsByClassName('bigPoster')[0].src=data.posterUrl;
           if (data.slogan!==null) {document.getElementsByClassName('filmName')[0].innerHTML=`${data.nameRu} (${data.year})<br/><br/><i class="filmQuote">&laquo;${data.slogan}&raquo;</i>`;} 
-          else {document.getElementsByClassName('filmName')[0].innerHTML=`${data.nameRu} (${data.year})<br/>`;}
-          document.getElementsByClassName('filmDescription')[0].innerHTML=`<h3>Про что фильм?</h3><p></p>${data.description}`;
+          else {document.getElementsByClassName('filmName')[0].innerHTML=`${data.nameRu} (${data.year}) <div className="flags"></div><br/>`;}
+          if (data.description!==null) {document.getElementsByClassName('filmDescription')[0].innerHTML=`<h3>Про что фильм?</h3><p></p>${data.description}`;}
+          else {document.getElementsByClassName('filmDescription')[0].innerHTML=`<h3>Про что фильм?</h3><p></p>не знаю....`;}
           document.getElementsByClassName('filmOther')[0].innerHTML=`
           Произведен в: <div class="countryAdd"></div>
           `;
           for (let i=0;i<data.countries.length;i++) {
-            let zpt;
-            (i+1)===data.countries.length ? zpt='&nbsp;' : zpt=',';
-            document.getElementsByClassName('countryAdd')[0].innerHTML+=`${data.countries[i].country}${zpt} `;
+            let country_code;
+
+            var x = getXMLDocument('https://www.artlebedev.ru/country-list/xml/'); //доделать значки флагов около названия
+            console.log(x);
+
+
+            document.getElementsByClassName('flags')[0].innerHTML+=`<img src="https://www.countryflags.io/${country_code}/flat/64.png">&nbsp;`;
           };
           for (let i=0;i<data.genres.length;i++) {
             document.getElementsByClassName('filmGenre')[0].innerHTML+=`<div class="labelOut"><div class="labelIn">${data.genres[i].genre}</div></div> `;
           };
-          for (let i=0;i<data.facts.length;i++){
+          if (data.facts.length!==0) {for (let i=0;i<data.facts.length;i++){
             document.getElementsByClassName('spoiler')[0].innerHTML+=`${i+1}. ${data.facts[i]}<p></p>`;
-          }
+          }} else {document.getElementsByClassName('filmFacts')[0].classList.add('spoiler')}
       })
     .catch((error) => {
         console.log(error);
