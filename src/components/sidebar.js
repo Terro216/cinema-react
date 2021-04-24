@@ -1,8 +1,5 @@
 import './sidebar.scss';
-import {
-    Link
-  } from "react-router-dom";
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 function Sidebar() {
     
@@ -44,9 +41,9 @@ function Sidebar() {
     );
     });
     return(
-        <div className="sidebar-wrapper">
+        <aside className="sidebar-wrapper">
 
-        </div>
+        </aside>
     );
 }
 
