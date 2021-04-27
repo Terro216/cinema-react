@@ -24,10 +24,8 @@ function getFilm(page,type,keyword) {
     .then((data) => {
         maxPages=data.pagesCount;
         if (page>maxPages||page<1) page=maxPages;
-        console.log(page,' ',maxPages);
         let wrapper = document.getElementsByClassName('cards')[0];
         wrapper.innerHTML="";
-        console.log(data);
         for (let i=0;i<data.films.length;i++) {
             let card = document.createElement('div');
             card.className="card";

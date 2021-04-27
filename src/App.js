@@ -4,6 +4,7 @@ import Main from './components/main.js';
 import Sidebar from './components/sidebar.js';
 import Footer from './components/footer.js';
 import Film from './components/film.js';
+import Ilyam from './components/ilyam.js';
 import {
   HashRouter,
   Switch,
@@ -22,6 +23,7 @@ function App() {
       
       <Route path="/film/:id" component={Film}/>
       <Route path="/:type/:keyword" component={Main}/>
+      <Route path="/ilyam" component={Ilyam}/>
       </Switch>
       <Sidebar />
       <Footer />
