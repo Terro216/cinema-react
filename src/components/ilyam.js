@@ -1,20 +1,26 @@
 import './ilyam.scss';
+import Html from '../parser/page.js'
 import { useEffect, useState } from 'react';
-///import * as html from '../parser/page_1.html'; add html loader
 
-function Ilyam(props) {
+function Ilyam() {
     const [page,changePage] = useState(1);
-    let maxPages;let keyword;
+    let maxPages;
     useEffect(() => {
         loadFilms();
     }); 
     function loadFilms(){
-        console.log(html);
+        let html = document.createElement('html');
+        html.innerHTML=Html;
+        for (let i=1;i<html.getElementsByClassName('num').length;i++) {
+            getOneFilm(html.getElementsByClassName('nameRus')[i]) //end here
+        }
+        
     }
-    function getOneFilm(keyword){
+    async function getOneFilm(keyword){
     let request = new Request(`https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${keyword}&page=${page}`,{
         headers: new Headers({
-            'accept': 'application/json',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
             'X-API-KEY': '37970845-fd94-4f47-877f-229c8ce46304'})
     });
     fetch(request)
@@ -39,10 +45,9 @@ function Ilyam(props) {
             wrapper.appendChild(card);
     })
     .catch((error) => {
-        console.log('error catched')
+        console.log(error)
       }
     );
-    
     }
 
     return(
