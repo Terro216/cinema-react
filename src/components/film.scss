@@ -36,8 +36,9 @@
             .labelOut {
                 filter: drop-shadow(5px 6px 3px rgba(50, 50, 50, 1));
                 position: relative;
-                  background: tomato;
+                background: tomato;
                 width:10%;height:50px;
+                min-width:110px;
                 clip-path: polygon(100% 0%, 100% 53%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
                 background-color: black;
                 filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
@@ -71,13 +72,37 @@
     }
     .filmFacts {
         font-size:1em;
-        padding: 2% 2% 4% 2%;
-        background-color:lightyellow;
+        margin: 2% 2% 4% 2%;
+        border-radius: 5%;
+        padding:5%;
+        background-color:lightgreen;
+    }
+    .anotherFilms {
+        display: flex;
+        justify-content: space-around;
+        align-items: baseline;
+        flex-wrap: wrap;
+        margin-bottom:1%;
+        .card {
+            width:120px;
+            height:250px;
+            img {
+                animation:none;
+            }
+        }
     }
 }
 
-.spoiler {
-    visibility: hidden;
+
+.factsInfo {
+    background-color:rgb(255, 243, 204);
+    width:30%;
+    text-align:center;
+    padding: 3%;
+    border:1px solid black;
+    border-radius: 5%;
+    display:flex;justify-content: center;align-items: center;
+    margin:5% auto;
 }
 
 .flags {

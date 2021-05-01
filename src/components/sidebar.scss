@@ -12,4 +12,26 @@
     .sidebar-header {
         background-color:#ac5f12;
     }
+    .genre-card {
+        &:hover {
+            animation: asideHover .1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+            animation-fill-mode:both;
+            animation-direction:alternate;
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .sidebar-wrapper{
+        display: none;
+    }
+}
+
+@keyframes asideHover {
+    0% {
+        background-color:#2d323c;
+    }
+    100%{
+        background-color:#445a86;
+    }
 }

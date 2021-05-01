@@ -30,7 +30,7 @@ function getFilm(page,type,keyword) {
             card.className="card";
             card.innerHTML = `
             <a href="#/film/${data.films[i].filmId}">
-            <img src='${data.films[i].posterUrlPreview}'></img>
+            <div class="imgWrapper"><img src='${data.films[i].posterUrlPreview}'></img></div>
             <br>
             <h3>${data.films[i].nameRu} (${data.films[i].year})</h3>
             </a>`;

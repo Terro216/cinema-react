@@ -14,6 +14,12 @@
     display:flex;
     flex-direction:row;
     justify-content:space-around;
-    align-items:stretch;
+    align-items: flex-start;
     flex-wrap: wrap;
+    align-content: space-around;
+    @media screen and (max-width: 450px) {
+      width: 100vw;
+      margin: 0 auto;
+      align-items: baseline;
+  }
 }
