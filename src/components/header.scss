@@ -6,6 +6,7 @@
     margin:0;
     background-color:#2d323c;
     grid-area: header;
+    color:white;
     .header-brand {
         display: flex;
         justify-content: center;
@@ -55,13 +56,15 @@
             height:70%;
             width:20%;
             display:flex;justify-content: center;align-items: center;
-            font-size: 1.4em;
-            margin-left:2%;
-            padding:0.1em;
-            text-decoration-color: white;
-            color:white;
-            background: linear-gradient(90deg, #3f19c7,#FF3300);
             border-radius: 5%;
+            margin-left:2%;
+            background: linear-gradient(90deg, #3f19c7,#FF3300);
+            padding:0.1em;
+            .recommendButton {
+                color:white;
+                font-size: 1.4em;
+
+            }
             &:hover {
                 animation: gradiRec .1s linear;
                 animation-fill-mode:both;

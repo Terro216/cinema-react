@@ -19,7 +19,7 @@ function Ilyam() {
             let regex = /\d+/gm;
             let id = html.getElementsByClassName('nameRus')[i].getElementsByTagName('a')[0].getAttribute("href");
             id = regex.exec(id)[0];
-            getOneFilm(id)
+            getOneFilm(id);
         }
         /*console.log(filmCounter<(filmsPerPage*page),' ',filmCounter,' ',filmsPerPage,' ',page)
             for (let i=filmCounter;i<=(filmsPerPage*page);i++) {
@@ -31,11 +31,11 @@ function Ilyam() {
             filmCounter+=(filmsPerPage*page)-1; */
     }
     function getOneFilm(id){
-    let request = new Request(`https://kinopoiskapiunofficial.tech/api/v2.1/films/${id}`,{
+    //let request = new Request(`https://icy-river-97ee.ilyamed.workers.dev/?https://kinopoiskapiunofficial.tech/api/v2.1/films/${id}`,{
+        let request = new Request(`https://kinopoiskapiunofficial.tech/api/v2.1/films/${id}`,{
         headers: new Headers({
-            //'Acces-Control-Allow-Origin':'*',
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
+            'accept': 'application/json',
+            'Access-Control-Allow-Origin': '*',
             'X-API-KEY': '37970845-fd94-4f47-877f-229c8ce46304'})
     });
     fetch(request)
@@ -57,6 +57,7 @@ function Ilyam() {
             <br>
             <h3>${data.nameRu} (${data.year})</h3>
             </a>`;
+            console.log(card);
             wrapper.appendChild(card);
     })
     .catch((error) => {

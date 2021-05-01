@@ -3,7 +3,7 @@ import './footer.scss';
 function Footer() {
     return(
         <div className="footer-wrapper">
-            made by i l y a m e d
+            <span>made by  <a href="https://ilyamed.site/" target="_blank">i l y a m e d</a></span>
         </div>
     );
 }
