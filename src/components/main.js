@@ -6,7 +6,7 @@ function Main(props) {
     const [page,changePage] = useState(1);
     let maxPages;
     useEffect(() => {
-    maxPages = getFilm(page,props.match.params.type,props.match.params.keyword)//page,props.type,props.keyword);
+        maxPages = getFilm(page,props.match.params.type,props.match.params.keyword)//page,props.type,props.keyword);
     });
 
     return(

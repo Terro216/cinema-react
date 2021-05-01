@@ -43,19 +43,56 @@
             margin-left:2%;
             padding:0.1em;
             color:white;
-            background: linear-gradient(31deg, #FF3300, #3f19c7);
+            background: linear-gradient(90deg, #FF3300, #3f19c7);
             border-radius: 5%;
+            &:hover {
+                animation: gradiSearch .1s linear;
+                animation-fill-mode:both;
+            }
         }
     }
-}
-/*.header-pages {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.3em;
-    span{
-        border: 1px solid white;
-        border-radius: 15%;
-        padding:3%;
+    .recommend {
+            height:70%;
+            width:20%;
+            display:flex;justify-content: center;align-items: center;
+            font-size: 1.4em;
+            margin-left:2%;
+            padding:0.1em;
+            text-decoration-color: white;
+            color:white;
+            background: linear-gradient(90deg, #3f19c7,#FF3300);
+            border-radius: 5%;
+            &:hover {
+                animation: gradiRec .1s linear;
+                animation-fill-mode:both;
+            }
     }
-}*/
+}
+@keyframes gradiRec {
+    from {
+        background: linear-gradient(90deg, #3f19c7,#FF3300);
+    }
+    40% {
+        background: linear-gradient(150deg, #3f19c7,#FF3300);
+    }
+    80% {
+        background: linear-gradient(210deg, #3f19c7,#FF3300);
+    }
+    to {
+        background: linear-gradient(270deg, #3f19c7,#FF3300);
+    }
+}
+@keyframes gradiSearch {
+    from {
+        background: linear-gradient(90deg, #FF3300, #3f19c7);
+    }
+    40% {
+        background: linear-gradient(150deg, #FF3300, #3f19c7);
+    }
+    80% {
+        background: linear-gradient(210deg, #FF3300, #3f19c7);
+    }
+    to {
+        background: linear-gradient(270deg, #FF3300, #3f19c7);
+    }
+}
