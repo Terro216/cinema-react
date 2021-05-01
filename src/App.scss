@@ -25,8 +25,25 @@ a,input {
   max-width:100%;
   max-height:75%;
   border-radius: 10px;
-  box-shadow: 0 0 10px grey;
+  box-shadow: 5px 5px 10px grey;
   }
+  &:hover {
+    display:block;
+    animation: 100ms linear big;
+    animation-direction: alternate;
+    animation-fill-mode:both;
+  }
+}
+
+@keyframes big {
+  from {
+    max-width: 155px;
+    max-height: 350px;
+  }
+  to { 
+  max-width: 165px;
+  max-height: 360px;
+  }  
 }
 
 .pageListWrapper {
