@@ -14,7 +14,7 @@ function Header() {
         </Link>
       </div>
       <div className="recommend">
-        <Link to='/ilyam'>Мои любимые фильмы</Link>
+        <Link className="recommendButton" to='/ilyam'>Мои любимые фильмы</Link>
       </div>
       <div className="search">
         <input
