@@ -1,6 +1,6 @@
-
+let maxPages;
 function getFilm(page,type,keyword) {
-    let maxPages;let req;
+    let req;
     if (type==="top") {
         req = `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=${keyword}&page=${page}`
     } else if (type==="search") {
@@ -22,8 +22,7 @@ function getFilm(page,type,keyword) {
       }
     })
     .then((data) => {
-        maxPages=data.pagesCount;
-        if (page>maxPages||page<1) page=maxPages;
+        maxPages=(data.pagesCount);
         let wrapper = document.getElementsByClassName('cards')[0];
         wrapper.innerHTML="";
         for (let i=0;i<data.films.length;i++) {
@@ -37,12 +36,13 @@ function getFilm(page,type,keyword) {
             </a>`;
             wrapper.appendChild(card);
         }
+        return maxPages;
     })
     .catch((error) => {
-        maxPages = getFilm(1,type,keyword);
+        return getFilm(1,type,keyword);
       }
     );
-    return maxPages;
+  return maxPages;
 }
 
 export default getFilm;

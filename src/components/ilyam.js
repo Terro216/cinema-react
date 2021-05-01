@@ -1,15 +1,16 @@
 import './ilyam.scss';
 import Html from '../parser/page.js'
-import { useEffect, useState } from 'react';
+import { useEffect//, useState 
+} from 'react';
 
 function Ilyam() {
-    const [page,changePage] = useState(1);
-    let maxPages = 1;
-    let filmCounter = 1; 
+    //const [page,changePage] = useState(1);
+    //let maxPages = 1;
+    //let filmCounter = 1; 
     let html = document.createElement('html');
     html.innerHTML=Html;
     let length = html.getElementsByClassName('num').length;
-    let filmsPerPage = 7; while ((Number.isInteger(length/filmsPerPage))!==true) {filmsPerPage+=1}; maxPages = (length/filmsPerPage);
+    //let filmsPerPage = 7; while ((Number.isInteger(length/filmsPerPage))!==true) {filmsPerPage+=1}; maxPages = (length/filmsPerPage);
     useEffect(() => {
         loadFilms();
     }); 
