@@ -2,7 +2,6 @@ import './sidebar.scss';
 import { useEffect } from 'react';
 
 function Sidebar() {
-    
     useEffect(() => {
     let request = new Request('https://kinopoiskapiunofficial.tech/api/v2.1/films/filters',{
         headers: new Headers({

@@ -1,12 +1,17 @@
 .header-wrapper {
+    @media screen and (max-width: 450px) {
+        display:none;
+    }
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-direction: row;
     padding:2% 0 2% 0;
     margin:0;
     background-color:#2d323c;
     grid-area: header;
     color:white;
+    z-index: 2;
     .header-brand {
         display: flex;
         justify-content: center;
@@ -70,7 +75,16 @@
                 animation-fill-mode:both;
             }
     }
+    @media screen and (max-width: 900px) {
+        .recommend {
+            display:none;
+        }
+    }
+    /*@media screen and (max-width: 450px) {
+        display:none;
+    }*/
 }
+
 @keyframes gradiRec {
     from {
         background: linear-gradient(90deg, #3f19c7,#FF3300);

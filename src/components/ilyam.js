@@ -53,7 +53,7 @@ function Ilyam() {
             card.className="card";
             card.innerHTML = `
             <a href="#/film/${data.filmId}">
-            <img src='${data.posterUrlPreview}'></img>
+            <div class="imgWrapper"><img src='${data.posterUrlPreview}'></img></div>
             <br>
             <h3>${data.nameRu} (${data.year})</h3>
             </a>`;

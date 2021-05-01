@@ -1,5 +1,6 @@
 import './App.scss';
 import Header from './components/header.js';
+import HeaderMob from './components/headerMob.js';
 import Main from './components/main.js';
 import Sidebar from './components/sidebar.js';
 import Footer from './components/footer.js';
@@ -17,6 +18,7 @@ function App() {
     <div className="App">
       
     <HashRouter basename="/">
+      <HeaderMob />
       <Header />
       <Switch>
       <Redirect exact from="/" to="/top/TOP_250_BEST_FILMS" component={Main} />
@@ -25,7 +27,7 @@ function App() {
       <Route path="/:type/:keyword" component={Main}/>
       <Route path="/ilyam" component={Ilyam}/>
       </Switch>
-      <Sidebar />
+      <Sidebar/>
       <Footer />
     </HashRouter>
     </div>
