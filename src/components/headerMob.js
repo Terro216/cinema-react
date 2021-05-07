@@ -1,6 +1,6 @@
 import './headerMob.scss';
 import logo from "../logo.svg"
-import Sidebar from './sidebar.js'
+//import Sidebar from './sidebar.js'
 import hamburger from '../hamburger.svg'
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
