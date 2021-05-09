@@ -1,5 +1,5 @@
 .headerMob-wrapper {
-    @media screen and (min-width: 450px) {
+    @media screen and (min-width: 550px) {
         display:none;
     }
     width:100%;height:auto;
@@ -12,6 +12,41 @@
         width:100%;
         flex-direction: column;
         background-color:inherit;
+        .mobSearch {
+            position:fixed;
+            display: flex;
+            flex-direction: column;
+            width:60%;
+            background-color: inherit;
+            padding:1%;
+            border-radius: 2%;
+            @media screen and (max-width:375px) {
+                width:50%;
+            }
+            .mobSearchBar {
+            height:70%;
+            border-radius: 5%;
+            font-size: 1.4em;
+            }
+            .mobSearchButton {
+                width:50%;
+                margin: 2% auto;
+                font-size: 1.3em;
+                height:70%;
+            //width:15%;
+            display:flex;justify-content: center;align-items: center;
+            //font-size: 1.4em;
+            //margin-left:2%;
+            padding:0.1em;
+            color:white;
+            background: linear-gradient(90deg, #FF3300, #3f19c7);
+            border-radius: 5%;
+            &:hover {
+                animation: gradiSearch .1s linear;
+                animation-fill-mode:both;
+            }
+            }
+        }
         /*.sidebar-wrapper {
             display:none;
             max-width: 20px;

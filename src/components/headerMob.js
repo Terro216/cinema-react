@@ -6,20 +6,21 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 function HeaderMob() {
-    const [search, setSearch] = useState(" ")
+    const [mobSearch, setMobSearch] = useState(" ")
     let hamburgerState = 1;
 
     function toggleHamburger() {
         if (hamburgerState===0) {
             document.getElementsByClassName('hamburger-links')[0].style.display='none';
             document.getElementsByClassName('sidebar-wrapper')[0].style.display='none';
+            //document.getElementsByClassName('card')[0].style.width='90%';
             hamburgerState=1;
         } else {
             document.getElementsByClassName('hamburger-links')[0].style.display='flex';
             document.getElementsByClassName('sidebar-wrapper')[0].style.display='block';
+            //document.getElementsByClassName('card')[0].style.width='calc(100%/3)'; do 1 card
             hamburgerState=0;
         }
-        console.log(hamburgerState);
     }
 
     return(
@@ -28,27 +29,29 @@ function HeaderMob() {
         <div className='headerMob'>
             <div className="header-brand">
                 <img className="logo" alt="logo" src={logo}></img>
-                <Link to="/">
+                <Link to="/" onClick={() => {
+                        document.getElementsByClassName("mobSearchBar")[0].value=''
+                    }}>
                 <span>CINEMA</span>
                 </Link>
             </div>
             <div className="hamburger-links">
-                <div className="search">
+                <div className="mobSearch">
                     <input
                     type="text"
-                    className="searchBar"
+                    className="mobSearchBar"
                     placeholder="Название..."
                     onChange={() => {
                         let word = encodeURIComponent(
-                        document.getElementsByClassName("searchBar")[0].value
+                        document.getElementsByClassName("mobSearchBar")[0].value
                         )
-                        setSearch(word)
+                        setMobSearch(word)
                     }}></input>
                     <Link
-                    className="searchButton"
-                    to={`/search/${search}`}
+                    className="mobSearchButton"
+                    to={`/search/${mobSearch}`}
                     onClick={() => {
-                        document.getElementsByClassName("searchBar")[0].value = ""
+                        document.getElementsByClassName("mobSearchBar")[0].value = ""
                     }}>
                     Поиск
                     </Link>
