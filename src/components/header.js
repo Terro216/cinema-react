@@ -13,9 +13,10 @@ function Header() {
           <span>CINEMA</span>
         </Link>
       </div>
-      <div className="recommend">
+      {/*<div className="recommend">
         <Link className="recommendButton" to='/ilyam'>Мои любимые фильмы</Link>
-      </div>
+        //когда нибудь я это доделаю....
+      </div>*/}
       <div className="search">
         <input
           type="text"
