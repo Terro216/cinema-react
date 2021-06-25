@@ -1,8 +1,7 @@
 import './headerMob.scss';
 import logo from "../logo.svg"
-//import Sidebar from './sidebar.js'
 import hamburger from '../hamburger.svg'
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Link } from "react-router-dom"
 
 function HeaderMob() {
@@ -56,8 +55,6 @@ function HeaderMob() {
                     Поиск
                     </Link>
                 </div>
-                {//<Sidebar className="sidebar"/>
-}
             </div>
             <button className="hamburgerButton" onClick={()=>{toggleHamburger()}}><img className="logo" alt="menu icon" src={hamburger}></img></button>
         </div>

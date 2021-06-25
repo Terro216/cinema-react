@@ -10,4 +10,8 @@
         color:white;
         text-decoration: none;
     }
+    @media screen and (max-width: 550px) {
+        min-height: 30px;
+    }
 }
+
