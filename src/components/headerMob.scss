@@ -11,15 +11,17 @@
     .hamburger-links {
       display: none;
       position: inherit;
-      margin-top: 25%;
-      width: 100%;
+      margin: 20% 50% 0 0;
+      width: 50%;
+      justify-content: flex-start;
+      align-items: flex-start;
       flex-direction: column;
       background-color: inherit;
       .mobSearch {
         position: fixed;
         display: flex;
         flex-direction: column;
-        width: 50%;
+        width: 100%;
         background-color: inherit;
         padding: 4%;
         border-radius: 2%;
@@ -77,6 +79,9 @@
         letter-spacing: 0.4em;
         margin-left: 2%;
         color: white;
+        @media screen and (max-width: 375px) {
+          font-size: 2em;
+        }
       }
     }
     .hamburgerButton {
