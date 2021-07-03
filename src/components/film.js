@@ -53,7 +53,7 @@ function Film() {
         }
       })
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         document.getElementsByClassName('filmScore')[0].innerHTML = `<div>КиноПоиск: ${data.rating.rating} (${data.rating.ratingVoteCount} шт.)</div><div>IMDB: ${data.rating.ratingImdb}  (${data.rating.ratingImdbVoteCount} шт.)</div> <div>Критики: ${data.rating.ratingFilmCritics} (${data.rating.ratingFilmCriticsVoteCount} шт.)</div>`;
         data = data.data;
         document.getElementsByClassName('bigPoster')[0].src = data.posterUrl;
@@ -88,7 +88,7 @@ function Film() {
           for (let i = 0; i < data.facts.length; i++) {
             document.getElementsByClassName('filmFacts')[0].innerHTML += `${i + 1}. ${data.facts[i]}<p></p>`;
           }
-        } else { document.getElementsByClassName('filmFacts-wrapper')[0].style.display='none' }
+        } else { document.getElementsByClassName('filmFacts-wrapper')[0].style.display = 'none' }
 
 
         let hasSimilar = similarFilms(id);
@@ -125,9 +125,9 @@ function Film() {
       </div>
 
       <div className="similar-wrapper">
-      <h2>Похожие фильмы:</h2>
-      <div className="anotherFilms">
-      </div>
+        <h2>Похожие фильмы:</h2>
+        <div className="anotherFilms">
+        </div>
       </div>
     </div>
   );

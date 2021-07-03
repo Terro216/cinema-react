@@ -1,115 +1,118 @@
 .header-wrapper {
-    @media screen and (max-width: 550px) {
-        display:none;
-    }
+  @media screen and (max-width: 550px) {
+    display: none;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  padding: 2% 0 2% 0;
+  margin: 0;
+  background-color: #2d323c;
+  grid-area: header;
+  color: white;
+  z-index: 2;
+  .header-brand {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-around;
-    flex-direction: row;
-    padding:2% 0 2% 0;
-    margin:0;
-    background-color:#2d323c;
-    grid-area: header;
-    color:white;
-    z-index: 2;
-    .header-brand {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width:50%;
-        height:100%;
-            .logo {
-                max-block-size: 3.6em;//70px;
-            }
-            span {
-            font-family: vis;
-            font-size: 3.5em;
-            letter-spacing: 0.4em;
-            margin-left: 2%;
-            color:white;
-            }
+    width: 50%;
+    height: 100%;
+    .logo {
+      max-block-size: 3.6em; //70px;
     }
-    .search {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width:50%;
-        height:100%;
-        .searchBar{
-            width:50%;
-            height:70%;
-            border-radius: 5%;
-            font-size: 1.6em;
-        }
-        .searchButton {
-            height:70%;
-            width:15%;
-            display:flex;justify-content: center;align-items: center;
-            font-size: 1.4em;
-            margin-left:2%;
-            padding:0.1em;
-            color:white;
-            background: linear-gradient(90deg, #FF3300, #3f19c7);
-            border-radius: 5%;
-            &:hover {
-                animation: gradiSearch .1s linear;
-                animation-fill-mode:both;
-            }
-        }
+    span {
+      font-family: vis;
+      font-size: 3.5em;
+      letter-spacing: 0.4em;
+      margin-left: 2%;
+      color: white;
     }
+  }
+  .search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    .searchBar {
+      width: 50%;
+      height: 70%;
+      border-radius: 5%;
+      font-size: 1.6em;
+    }
+    .searchButton {
+      height: 70%;
+      width: 15%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.4em;
+      margin-left: 2%;
+      padding: 0.1em;
+      color: white;
+      background: linear-gradient(90deg, #ff3300, #3f19c7);
+      border-radius: 5%;
+      &:hover {
+        animation: gradiSearch 0.1s linear;
+        animation-fill-mode: both;
+      }
+    }
+  }
+  .recommend {
+    height: 70%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
+    margin-left: 2%;
+    background: linear-gradient(90deg, #3f19c7, #ff3300);
+    padding: 0.1em;
+    .recommendButton {
+      color: white;
+      font-size: 1.4em;
+    }
+    &:hover {
+      animation: gradiRec 0.1s linear;
+      animation-fill-mode: both;
+    }
+  }
+  @media screen and (max-width: 900px) {
     .recommend {
-            height:70%;
-            width:20%;
-            display:flex;justify-content: center;align-items: center;
-            border-radius: 5%;
-            margin-left:2%;
-            background: linear-gradient(90deg, #3f19c7,#FF3300);
-            padding:0.1em;
-            .recommendButton {
-                color:white;
-                font-size: 1.4em;
-
-            }
-            &:hover {
-                animation: gradiRec .1s linear;
-                animation-fill-mode:both;
-            }
+      display: none;
     }
-    @media screen and (max-width: 900px) {
-        .recommend {
-            display:none;
-        }
-    }
-    /*@media screen and (max-width: 450px) {
+  }
+  /*@media screen and (max-width: 450px) {
         display:none;
     }*/
 }
 
 @keyframes gradiRec {
-    from {
-        background: linear-gradient(90deg, #3f19c7,#FF3300);
-    }
-    40% {
-        background: linear-gradient(150deg, #3f19c7,#FF3300);
-    }
-    80% {
-        background: linear-gradient(210deg, #3f19c7,#FF3300);
-    }
-    to {
-        background: linear-gradient(270deg, #3f19c7,#FF3300);
-    }
+  from {
+    background: linear-gradient(90deg, #3f19c7, #ff3300);
+  }
+  40% {
+    background: linear-gradient(150deg, #3f19c7, #ff3300);
+  }
+  80% {
+    background: linear-gradient(210deg, #3f19c7, #ff3300);
+  }
+  to {
+    background: linear-gradient(270deg, #3f19c7, #ff3300);
+  }
 }
 @keyframes gradiSearch {
-    from {
-        background: linear-gradient(90deg, #FF3300, #3f19c7);
-    }
-    40% {
-        background: linear-gradient(150deg, #FF3300, #3f19c7);
-    }
-    80% {
-        background: linear-gradient(210deg, #FF3300, #3f19c7);
-    }
-    to {
-        background: linear-gradient(270deg, #FF3300, #3f19c7);
-    }
+  from {
+    background: linear-gradient(90deg, #ff3300, #3f19c7);
+  }
+  40% {
+    background: linear-gradient(150deg, #ff3300, #3f19c7);
+  }
+  80% {
+    background: linear-gradient(210deg, #ff3300, #3f19c7);
+  }
+  to {
+    background: linear-gradient(270deg, #ff3300, #3f19c7);
+  }
 }

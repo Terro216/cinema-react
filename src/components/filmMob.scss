@@ -1,32 +1,40 @@
-.film-wrapper {
-    background-color:white;
-    grid-area: main;
-    width:100%;height:100%;
-    padding-top:5%;
-    .filmHeader {
-        display:flex;
-        flex-direction: column;
+.filmMob-wrapper {
+  background-color: white;
+  grid-area: main;
+  width: 100%;
+  height: 100%;
+  padding-top: 5%;
+  .filmHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .bigMobPoster {
+      width: 60%;
+    }
+    .filmName {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .filmQuote {
+        display: flex;
         justify-content: center;
         align-items: center;
-        .bigPoster {
-            max-width:50%;
-        }
-        .filmName{
-            display:flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        .filmQuote {
-            font-size:0.75em;
-        }}
-        .filmScore {
-            font-size:1.3em;
-            margin-top:2%;
-            display: flex;
-            width:100%;
-            justify-content: space-around;
-        }
-        .filmGenre {
+        text-align: center;
+        font-size: 0.6em;
+      }
+    }
+    .filmScore {
+      font-size: 1.2em;
+      margin-top: 2%;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      justify-content: space-around;
+    }
+    /*.filmGenre {
             font-size:1em;
             margin-top:2%;
             display: flex;
@@ -54,63 +62,69 @@
                 bottom: 3px;
                 background-color:rgb(252, 211, 136);
             }
-        }
+        }*/
+  }
+  .film {
+    margin: 4% 0 4% 0;
+    width: 100%;
+    #yohoho {
+      max-width: 100%;
+      max-height: 100%;
     }
-    .film {
-        margin: 4% 0 4% 0;
-        width:100%;
-        #yohoho {
-            max-width:100%;
-            max-height:100%;
-        }
-    }
-    .filmDescription {
-        text-align:center;
-        font-size:1.3em;
-        padding: 2% 2% 4% 2%;
-        background-color:lightgrey;
-    }
-    .filmFacts {
-        font-size:1em;
-        margin: 2% 2% 4% 2%;
-        border-radius: 5%;
-        padding:5%;
-        background-color:lightgreen;
+  }
+  .filmDescription {
+    text-align: center;
+    font-size: 1em;
+    padding: 2% 2% 4% 2%;
+    background-color: lightgrey;
+  }
+  .filmFacts {
+    font-size: 1em;
+    border-radius: 2%;
+    padding: 5%;
+    background-color: lightgreen;
+  }
+  .similar-wrapper {
+    .similar-header {
+      display: flex;
+      justify-content: center;
     }
     .anotherFilms {
-        display: flex;
-        justify-content: space-around;
-        align-items: baseline;
-        flex-wrap: wrap;
-        margin-bottom:1%;
-        .card {
-            width:120px;
-            height:250px;
-            img {
-                animation:none;
-            }
+      display: flex;
+      justify-content: space-around;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 1%;
+      .card {
+        width: 120px;
+        height: 250px;
+        img {
+          animation: none;
         }
+      }
     }
+  }
 }
 
-
 .factsInfo {
-    background-color:rgb(255, 243, 204);
-    width:30%;
-    text-align:center;
-    padding: 3%;
-    border:1px solid black;
-    border-radius: 5%;
-    display:flex;justify-content: center;align-items: center;
-    margin:5% auto;
+  background-color: rgb(255, 243, 204);
+  width: 30%;
+  text-align: center;
+  padding: 3%;
+  border: 1px solid black;
+  border-radius: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5% auto;
 }
 
 .flags {
-    display: inline-flex;
-    justify-content: center;
-    text-align: center;
-    .flag {
-    border:1px solid black;
-    width:70px;
-    }
+  display: inline-flex;
+  justify-content: center;
+  text-align: center;
+  .flag {
+    border: 1px solid black;
+    width: 70px;
+  }
 }

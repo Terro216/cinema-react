@@ -1,17 +1,18 @@
 .footer-wrapper {
-    background-color: #2d323c;
-    grid-area: footer;
-    padding:2% 0 2% 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: #2d323c;
+  grid-area: footer;
+  padding: 2% 0 2% 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  a {
     color: white;
-    a {
-        color:white;
-        text-decoration: none;
-    }
-    @media screen and (max-width: 550px) {
-        min-height: 30px;
-    }
+    text-decoration: none;
+  }
+  @media screen and (max-width: 550px) {
+    min-height: 30px;
+  }
 }
 
+//bugs: окно поиска наезжает на сайдбар + может сделать поиск с опечатками(1+1 например)

@@ -7,7 +7,7 @@ import Footer from './components/footer.js';
 import Film from './components/film.js';
 import FilmMob from './components/filmMob.js'
 import Ilyam from './components/ilyam.js';
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   HashRouter,
   Switch,
@@ -16,15 +16,15 @@ import {
 } from "react-router-dom";
 
 function App() {
-  let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-  window.onresize = ()=>{
+  let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  window.onresize = () => {
     let newWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    if (newWidth!==width) {
-      width=newWidth
+    if (newWidth !== width) {
+      width = newWidth
       window.location.reload();
     }
   };
-  if (width>550) {
+  if (width > 550) {
     return (
       <div className="App">
         <HashRouter basename="/">
@@ -40,7 +40,7 @@ function App() {
         </HashRouter>
       </div>
     );
-  } else{
+  } else {
     return (
       <div className="App">
         <HashRouter basename="/">
@@ -57,7 +57,7 @@ function App() {
       </div>
     );
   }
-  
+
 }
-  
+
 export default App;
