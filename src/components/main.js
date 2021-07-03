@@ -1,5 +1,5 @@
 import './main.scss';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import getFilm from '../scripts/getFilm.js'
 
 function Main(props) {
