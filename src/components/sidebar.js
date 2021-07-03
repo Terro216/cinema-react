@@ -18,7 +18,6 @@ function Sidebar() {
         }
       })
       .then((data) => {
-        console.log(data);
         let wrapper = document.getElementsByClassName('sidebar-wrapper')[0];
         let header = document.createElement('div');
         header.className = "sidebar-header";
