@@ -1,5 +1,5 @@
 function similarFilms(id) {
-    let hasSimilar=true;
+    let hasSimilar = true;
     let request = new Request(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/similars`, {
         headers: new Headers({
             'accept': 'application/json',
@@ -16,12 +16,12 @@ function similarFilms(id) {
         })
         .then((data) => {
             //console.log(data)
-            if (data.total===0) {
-                document.getElementsByClassName('similar-wrapper')[0].style.display='none'
+            if (data.total === 0) {
+                document.getElementsByClassName('similar-wrapper')[0].style.display = 'none'
             }
-            else{
-            let wrapper = document.getElementsByClassName('anotherFilms')[0];
-            wrapper.innerHTML = "";
+            else {
+                let wrapper = document.getElementsByClassName('anotherFilms')[0];
+                wrapper.innerHTML = "";
                 for (let i = 0; i < data.total; i++) {
                     let card = document.createElement('div');
                     card.className = "card";
@@ -35,7 +35,7 @@ function similarFilms(id) {
                 }
             }
         })
-        return hasSimilar;
+    return hasSimilar;
 }
 
 export default similarFilms;

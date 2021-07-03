@@ -1,38 +1,39 @@
 .sidebar-wrapper {
-    background-color:#2d323c;
-    border-left: 1px solid black;
-    grid-area: sidebar;
-    .genre-card,.sidebar-header {
-        display:flex;
-        justify-content: center;
-        align-items: center;
-        border:1px solid white;
-        color:white;
+  background-color: #2d323c;
+  border-left: 1px solid black;
+  grid-area: sidebar;
+  .genre-card,
+  .sidebar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    color: white;
+  }
+  .sidebar-header {
+    background-color: #ac5f12;
+  }
+  .genre-card {
+    &:hover {
+      animation: asideHover 0.1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+      animation-fill-mode: both;
+      animation-direction: alternate;
     }
-    .sidebar-header {
-        background-color:#ac5f12;
-    }
-    .genre-card {
-        &:hover {
-            animation: asideHover .1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-            animation-fill-mode:both;
-            animation-direction:alternate;
-        }
-    }
+  }
 }
 
 @media screen and (max-width: 550px) {
-    .sidebar-wrapper{
-        display: none;
-        margin-top:-10%;
-    }
+  .sidebar-wrapper {
+    display: none;
+    margin-top: -10%;
+  }
 }
 
 @keyframes asideHover {
-    0% {
-        background-color:#2d323c;
-    }
-    100%{
-        background-color:#445a86;
-    }
+  0% {
+    background-color: #2d323c;
+  }
+  100% {
+    background-color: #445a86;
+  }
 }

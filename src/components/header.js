@@ -1,10 +1,21 @@
 import "./header.scss"
 import logo from "../logo.svg"
-import { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 function Header() {
   const [search, setSearch] = useState(" ")
+
+  useEffect(() => {
+    document.getElementsByClassName("searchBar")[0]
+      .addEventListener("keyup", function (event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+          document.getElementsByClassName("searchButton")[0].click();
+        }
+      });
+  });
+
   return (
     <header className="header-wrapper">
       <div className="header-brand">

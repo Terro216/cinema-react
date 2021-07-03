@@ -9,7 +9,7 @@ function FilmMob() {
 
   useEffect(() => {
     //очистка всего, что остается при переходе с другого фильма:
-    document.getElementsByClassName('filmGenre')[0].innerHTML = '';
+    //document.getElementsByClassName('filmGenre')[0].innerHTML = '';
     document.getElementsByClassName('filmFacts')[0].innerHTML = '';
     document.getElementsByClassName('spoiler')[0].style.display = 'none';
     document.getElementsByClassName('factsInfo')[0].style.display = 'flex';
@@ -54,10 +54,13 @@ function FilmMob() {
         }
       })
       .then((data) => {
-        console.log(data);
-        document.getElementsByClassName('filmScore')[0].innerHTML = `<div>КиноПоиск: ${data.rating.rating}</div><div>IMDB: ${data.rating.ratingImdb}</div> <div>Критики: ${data.rating.ratingFilmCritics}</div>`;
+        //console.log(data);
+        let kprating = data.rating.rating || 'нет'
+        let imdbrating = data.rating.ratingImdb || 'нет'
+        let criticsrating = data.rating.ratingFilmCritics || 'нет'
+        document.getElementsByClassName('filmScore')[0].innerHTML = `<div>КиноПоиск: ${kprating}</div> <div>IMDB: ${imdbrating}</div> <div>Критики: ${criticsrating}</div>`;
         data = data.data;
-        document.getElementsByClassName('bigPoster')[0].src = data.posterUrl;
+        document.getElementsByClassName('bigMobPoster')[0].src = data.posterUrl;
 
         if (data.slogan !== null) { document.getElementsByClassName('filmName')[0].innerHTML = `${data.nameRu} (${data.year})<br/><br/><div class="flags"></div><br/><i class="filmQuote">&laquo;${data.slogan}&raquo;</i>`; }
         else { document.getElementsByClassName('filmName')[0].innerHTML = `${data.nameRu} (${data.year}) <div class="flags"></div><br/>`; }
@@ -89,7 +92,7 @@ function FilmMob() {
           for (let i = 0; i < data.facts.length; i++) {
             document.getElementsByClassName('filmFacts')[0].innerHTML += `${i + 1}. ${data.facts[i]}<p></p>`;
           }
-        } else { document.getElementsByClassName('filmFacts-wrapper')[0].style.display='none' }
+        } else { document.getElementsByClassName('filmFacts-wrapper')[0].style.display = 'none' }
 
 
         let hasSimilar = similarFilms(id);
@@ -101,11 +104,12 @@ function FilmMob() {
   });
 
   return (
-    <div className="film-wrapper">
+    <div className="filmMob-wrapper">
       <div className="filmHeader">
-        <img className="bigPoster" alt="big poster"></img>
+        <img className="bigMobPoster" alt="big poster"></img>
         <h1 className="filmName"> </h1>
-        <div className="filmGenre"></div>
+        {//<div className="filmGenre"></div>
+        }
         <div className="filmScore"></div>
       </div>
       <div className="film"></div>
@@ -125,9 +129,9 @@ function FilmMob() {
       </div>
 
       <div className="similar-wrapper">
-      <h2>Похожие фильмы:</h2>
-      <div className="anotherFilms">
-      </div>
+        <h2 className="similar-header">Похожие фильмы:</h2>
+        <div className="anotherFilms">
+        </div>
       </div>
     </div>
   );
