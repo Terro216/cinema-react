@@ -95,7 +95,7 @@ function FilmMob() {
         } else { document.getElementsByClassName('filmFacts-wrapper')[0].style.display = 'none' }
 
 
-        let hasSimilar = similarFilms(id);
+        similarFilms(id);
       })
       .catch((error) => {
         console.log(error);
@@ -108,8 +108,6 @@ function FilmMob() {
       <div className="filmHeader">
         <img className="bigMobPoster" alt="big poster"></img>
         <h1 className="filmName"> </h1>
-        {//<div className="filmGenre"></div>
-        }
         <div className="filmScore"></div>
       </div>
       <div className="film"></div>

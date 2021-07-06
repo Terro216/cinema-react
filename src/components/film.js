@@ -6,16 +6,15 @@ import similarFilms from '../scripts/similarFilms.js'
 
 function Film() {
   let { id } = useParams();
-
   useEffect(() => {
     //очистка всего, что остается при переходе с другого фильма:
     document.getElementsByClassName('filmGenre')[0].innerHTML = '';
     document.getElementsByClassName('filmFacts')[0].innerHTML = '';
     document.getElementsByClassName('spoiler')[0].style.display = 'none';
     document.getElementsByClassName('factsInfo')[0].style.display = 'flex';
-
     let wrapper = document.getElementsByClassName('film')[0];
     wrapper.innerHTML = '';
+    //pleer 1
     let film = document.createElement('div');
     let script = document.createElement('script');
     script.type = "text/javascript";
@@ -24,13 +23,15 @@ function Film() {
     film.innerHTML = `
             <div id="yohoho" data-kinopoisk="${id}"></div>
             `;
-    //ver 2
+    //pleer 2
     let film2 = document.createElement('div');
-    let script2 = document.createElement('script');
-    script2.type = "text/javascript";
-    script2.src = `//pleer.videoplayers.club/get_player?w=610&h=370&type=watch&kp_id=${id}&players=apicollaps,videocdn,bazon,hdvb,alloha,ustore,iframe,trailer&bt_s=b_r:6;b_h:40;b_w:100;b_c:FFFFFF;b_bg:428BCA;b_f:18;&bt_n=Плеер 2&ani=COLLAPS&ati=&adi=&vni=VIDEOCDN&vti=&vdi=&hni=HDVB&hti=&hdi=&bni=BAZON&bti=&bdi=&alni=ALLOHATV&alti=&aldi=&usni=USTOREBZ&usti=&usdi=&idi=`;
     film2.className = "uitools";
     film2.id = 'uitools';
+    let script2 = document.createElement('script');
+    script2.type = "text/javascript";
+    script2.src=`//pleer.videoplayers.club/get_player?w=610&h=370&type=watch&kp_id=${id}&players=hdvb,apicollaps,videocdn,bazon,alloha,ustore,trailer,torrent&bt_s=b_r:6;b_h:40;b_w:100;b_c:FFFFFF;b_bg:428BCA;b_f:16;&bt_n=Плеер 2&ani=COLLAPS&ati=&adi=&vni=VIDEOCDN&vti=&vdi=&hni=HDVB&hti=&hdi=&bni=BAZON&bti=&bdi=&alni=ALLOHATV&alti=&aldi=&usni=USTOREBZ`;
+    script2.async = true;
+
     wrapper.appendChild(film);
     wrapper.appendChild(script);
 
@@ -54,7 +55,7 @@ function Film() {
       })
       .then((data) => {
         //console.log(data);
-        document.getElementsByClassName('filmScore')[0].innerHTML = `<div>КиноПоиск: ${data.rating.rating} (${data.rating.ratingVoteCount} шт.)</div><div>IMDB: ${data.rating.ratingImdb}  (${data.rating.ratingImdbVoteCount} шт.)</div> <div>Критики: ${data.rating.ratingFilmCritics} (${data.rating.ratingFilmCriticsVoteCount} шт.)</div>`;
+        document.getElementsByClassName('filmScore')[0].innerHTML = `<div>КиноПоиск: ${data.rating.rating} (${data.rating.ratingVoteCount} шт.)</div><div>IMDB: ${data.rating.ratingImdb}  (${data.rating.ratingImdbVoteCount} шт.)</div> <div>Критики: ${data.rating.ratingFilmCritics==='null'?0:data.rating.ratingFilmCritics} (${data.rating.ratingFilmCriticsVoteCount} шт.)</div>`;
         data = data.data;
         document.getElementsByClassName('bigPoster')[0].src = data.posterUrl;
 
@@ -62,7 +63,7 @@ function Film() {
         else { document.getElementsByClassName('filmName')[0].innerHTML = `${data.nameRu} (${data.year}) <div class="flags"></div><br/>`; }
 
         if (data.description !== null) { document.getElementsByClassName('filmDescription')[0].innerHTML = `<h3>Про что фильм?</h3><p></p>${data.description}`; }
-        else { document.getElementsByClassName('filmDescription')[0].innerHTML = `<h3>Про что фильм?</h3><p></p>не знаю....`; }
+        else { document.getElementsByClassName('filmDescription')[0].innerHTML = `<h3>Про что фильм?</h3><p></p>Кто знает....`; }
 
 
         for (let i = 0; i < data.countries.length; i++) {
@@ -91,7 +92,7 @@ function Film() {
         } else { document.getElementsByClassName('filmFacts-wrapper')[0].style.display = 'none' }
 
 
-        let hasSimilar = similarFilms(id);
+        similarFilms(id);
       })
       .catch((error) => {
         console.log(error);

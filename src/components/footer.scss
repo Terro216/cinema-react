@@ -1,18 +1,22 @@
+@import '../App.scss';
+
 .footer-wrapper {
-  background-color: #2d323c;
+  background-color: $back-color;
   grid-area: footer;
   padding: 2% 0 2% 0;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  a {
+  span, .copy-link {
+    a {
+      color:white;
+    }
     color: white;
     text-decoration: none;
+    margin-left: 5%;
   }
   @media screen and (max-width: 550px) {
     min-height: 30px;
   }
 }
-
-//bugs: окно поиска наезжает на сайдбар + может сделать поиск с опечатками(1+1 например)

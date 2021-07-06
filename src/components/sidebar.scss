@@ -1,5 +1,7 @@
+@import '../App.scss';
+
 .sidebar-wrapper {
-  background-color: #2d323c;
+  background-color: $back-color;
   border-left: 1px solid black;
   grid-area: sidebar;
   .genre-card,
@@ -9,11 +11,17 @@
     align-items: center;
     border: 1px solid white;
     color: white;
+    h3 {
+      letter-spacing: 2px;
+    }
   }
   .sidebar-header {
-    background-color: #ac5f12;
+    background-color: $second-color;
   }
   .genre-card {
+    h3 {
+      letter-spacing: 2px;
+    }
     &:hover {
       animation: asideHover 0.1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
       animation-fill-mode: both;
@@ -25,7 +33,9 @@
 @media screen and (max-width: 550px) {
   .sidebar-wrapper {
     display: none;
-    margin-top: -10%;
+    position: absolute;
+    top: 33%;
+    width:100%;
   }
 }
 
