@@ -4,23 +4,8 @@ import hamburger from '../hamburger.svg'
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-function HeaderMob() {
-    const [mobSearch, setMobSearch] = useState(" ")
-    let hamburgerState = 1;
-
-    function toggleHamburger() {
-        if (hamburgerState === 0) {
-            document.getElementsByClassName('hamburger-links')[0].style.display = 'none';
-            document.getElementsByClassName('sidebar-wrapper')[0].style.display = 'none';
-            //document.getElementsByClassName('card')[0].style.width='90%';
-            hamburgerState = 1;
-        } else {
-            document.getElementsByClassName('hamburger-links')[0].style.display = 'flex';
-            document.getElementsByClassName('sidebar-wrapper')[0].style.display = 'block';
-            //document.getElementsByClassName('card')[0].style.width='calc(100%/3)'; do 1 card
-            hamburgerState = 0;
-        }
-    }
+function HeaderMob(props) {
+    const [mobSearch, setMobSearch] = useState(" ");
 
     return (
         <div className='headerMob-wrapper'>
@@ -34,7 +19,10 @@ function HeaderMob() {
                         <span>CINEMA</span>
                     </Link>
                 </div>
-                <div className="hamburger-links">
+                
+                <button className="hamburgerButton" onClick={() => { props.tog() }}><img className="logo" alt="menu icon" src={hamburger}></img></button>
+            </div>
+            <div className="hamburger-links">
                     <div className="mobSearch">
                         <input
                             type="text"
@@ -50,16 +38,12 @@ function HeaderMob() {
                             className="mobSearchButton"
                             to={`/search/${mobSearch}`}
                             onClick={() => {
-                                document.getElementsByClassName("mobSearchBar")[0].value = "";
-                                toggleHamburger() //почему-то не работает.. но и не надо
+                                props.tog()
                             }}>
                             Поиск
                         </Link>
                     </div>
                 </div>
-                <button className="hamburgerButton" onClick={() => { toggleHamburger() }}><img className="logo" alt="menu icon" src={hamburger}></img></button>
-            </div>
-
         </div>
     );
 }

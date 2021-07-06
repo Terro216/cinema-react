@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     .bigPoster {
-      max-width: 30%;
+      max-width: 25%;
     }
     .filmName {
       display: flex;
@@ -92,25 +92,28 @@
     background-color: lightgrey;
   }
   .filmFacts {
-    font-size: 1em;
+    font-size: 1.1em;
     margin: 2% 2% 4% 2%;
-    border-radius: 5%;
     padding: 5%;
     background-color: lightgreen;
-  }
-  .anotherFilms {
+  } 
+  .similar-wrapper{
+    h2 {
+      text-align: center;
+    }
+    .anotherFilms {
     display: flex;
     justify-content: space-around;
     align-items: baseline;
     flex-wrap: wrap;
-    margin-bottom: 1%;
+    margin-bottom: 2%;
     .card {
       width: 120px;
       height: 250px;
-      img {
-        animation: none;
-      }
+      margin-top: 0;
+      margin-bottom: 0;
     }
+  }
   }
 }
 

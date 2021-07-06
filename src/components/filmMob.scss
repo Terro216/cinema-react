@@ -3,7 +3,7 @@
   grid-area: main;
   width: 100%;
   height: 100%;
-  padding-top: 5%;
+  padding-top: 20%;
   .filmHeader {
     display: flex;
     flex-direction: column;
@@ -19,10 +19,11 @@
       align-items: center;
       .filmQuote {
         display: flex;
+        max-width:70%;
         justify-content: center;
         align-items: center;
         text-align: center;
-        font-size: 0.6em;
+        font-size: 0.7em;
       }
     }
     .filmScore {
@@ -34,35 +35,6 @@
       align-items: center;
       justify-content: space-around;
     }
-    /*.filmGenre {
-            font-size:1em;
-            margin-top:2%;
-            display: flex;
-            width:100%;
-            justify-content: space-evenly;
-            align-items: center;
-            .labelOut {
-                filter: drop-shadow(5px 6px 3px rgba(50, 50, 50, 1));
-                position: relative;
-                background: tomato;
-                width:10%;height:50px;
-                min-width:110px;
-                clip-path: polygon(100% 0%, 100% 53%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
-                background-color: black;
-                filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
-            }
-            .labelIn{
-                clip-path: polygon(100% 0%, 100% 53%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
-                display:flex;justify-content: center;align-items: center;
-                position: absolute;
-                font-size: 1.1em;
-                top: 3px;
-                left: 3px;
-                right: 3px;
-                bottom: 3px;
-                background-color:rgb(252, 211, 136);
-            }
-        }*/
   }
   .film {
     margin: 4% 0 4% 0;
@@ -74,13 +46,12 @@
   }
   .filmDescription {
     text-align: center;
-    font-size: 1em;
+    font-size: 1.4em;
     padding: 2% 2% 4% 2%;
     background-color: lightgrey;
   }
   .filmFacts {
-    font-size: 1em;
-    border-radius: 2%;
+    font-size: 1.2em;
     padding: 5%;
     background-color: lightgreen;
   }
@@ -94,13 +65,9 @@
       justify-content: space-around;
       align-items: baseline;
       flex-wrap: wrap;
-      margin-bottom: 1%;
       .card {
         width: 120px;
         height: 250px;
-        img {
-          animation: none;
-        }
       }
     }
   }
@@ -108,9 +75,10 @@
 
 .factsInfo {
   background-color: rgb(255, 243, 204);
-  width: 30%;
+  width: 50%;
   text-align: center;
   padding: 3%;
+  font-size: 1.3em;
   border: 1px solid black;
   border-radius: 5%;
   display: flex;

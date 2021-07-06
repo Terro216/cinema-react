@@ -1,14 +1,21 @@
 import './sidebar.scss';
 import { useEffect } from 'react';
 
-function Sidebar() {
+function Sidebar(props) {
+
   useEffect(() => {
+    if (document.getElementsByClassName('genre').length===0){
     let request = new Request('https://kinopoiskapiunofficial.tech/api/v2.1/films/filters', {
       headers: new Headers({
         'accept': 'application/json',
         'X-API-KEY': '37970845-fd94-4f47-877f-229c8ce46304'
       })
     });
+
+    function up(e) {
+      return e.charAt(0).toUpperCase() + e.slice(1)
+    }
+
     fetch(request)
       .then((response) => {
         if (response.ok) {
@@ -28,7 +35,7 @@ function Sidebar() {
           genre.className = "genre";
           genre.innerHTML = `
             <a class="genre-card" href="#/genre/${data.genres[i].id}">
-            <h3>${data.genres[i].genre}</h3>
+            <h3>${up(data.genres[i].genre)}</h3>
             </a>`;
           wrapper.appendChild(genre);
         }
@@ -38,9 +45,10 @@ function Sidebar() {
         console.log(error);
       }
       );
-  });
+  };
+});
   return (
-    <aside className="sidebar-wrapper">
+    <aside className="sidebar-wrapper" onClick={props.tog}>
 
     </aside>
   );

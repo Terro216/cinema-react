@@ -32,10 +32,14 @@ function getFilm(page, type, keyword) {
         card.innerHTML = `
             <a href="#/film/${data.films[i].filmId}">
             <div class="imgWrapper"><img src='${data.films[i].posterUrlPreview}'></img></div>
-            <br>
-            <h3>${data.films[i].nameRu} (${data.films[i].year})</h3>
+            <h3 class="fn">${data.films[i].nameRu} (${data.films[i].year})</h3>
             </a>`;
         wrapper.appendChild(card);
+        let h = parseFloat(getComputedStyle(document.getElementsByClassName('fn')[i], null).height.replace("px", ""));
+        if (h>100) 
+        {
+          document.getElementsByClassName('card')[i].style.marginBottom=h-100+'px'
+        }
       }
       return maxPages;
     })
@@ -43,6 +47,7 @@ function getFilm(page, type, keyword) {
       return getFilm(1, type, keyword);
     }
     );
+    
   return maxPages;
 }
 
