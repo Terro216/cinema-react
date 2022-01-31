@@ -1,0 +1,18 @@
+@import "../App.scss";
+
+.error404-wrapper {
+	grid-area: main;
+	width: 100%;
+	height: max-content;
+	padding: 50% 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	.error404-header {
+	}
+	.error404-button {
+		@include mainButton;
+		font-size: 1.2em;
+	}
+}

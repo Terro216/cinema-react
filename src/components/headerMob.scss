@@ -1,102 +1,102 @@
-@import '../App.scss';
+@import "../App.scss";
 
 .headerMob-wrapper {
-  @media screen and (min-width: 550px) {
-    display: none;
-  }
-  margin-bottom: 10%;
-  .headerMob {
-    width: 100%;
-    height:9%;
-    position: fixed;
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: row;
-    padding: 2%;
-    background-color: $back-color;
-    grid-area: header;
-    color: white;
-    z-index: 3;
-    .header-brand {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      align-items: center;
-      max-width: 50%;
-      height: 100%;
-      .logo {
-        max-block-size: 2.5em; //70px;
-      }
-      span {
-        font-family: vis;
-        font-size: 2.5em;
-        letter-spacing: 0.4em;
-        margin-left: 2%;
-        color: white;
-        @media screen and (max-width: 375px) {
-          font-size: 2em;
-        }
-      }
-    }
-    .hamburgerButton {
-      width:2.5rem;
-      border-radius: 0.25rem;
-      color: white;
-      white-space: nowrap;
-      text-decoration: none;
-      padding: 0.25rem 0.5rem;
-      margin: 0.25rem;
-      cursor: pointer;
-      background-color: white;
-      .logo {
-        color: white;
-      }
-    }
-  }
-  
-  .hamburger-links {
-    display: none;
-    position: absolute;
-    top:9%;
-    z-index:2;
-    width: 100%;
-    height:24%;
-    background-color: #2d323c;
-    .mobSearch {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      background-color: inherit;
-      padding: 10%;
-      border-radius: 2%;
-      width: 80%;
-      .mobSearchBar {
-        height: 2em;
-        width:100%;
-        border-radius: 5%;
-        font-size: 1.4em;
-      }
-      .mobSearchButton {
-        position: relative;
-        width: 60%;
-        margin: 3% auto;
-        font-size: 1.3em;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        //margin-left:2%;
-        padding: 0.5em;
-        color: white;
-        background: linear-gradient(90deg, #ff3300, #3f19c7);
-        border-radius: 5%;
-        &:hover {
-          animation: gradiSearch 0.1s linear;
-          animation-fill-mode: both;
-        }
-      }
-    }
-  }
+	@media screen and (min-width: 550px) {
+		display: none;
+	}
+	margin-bottom: 10%;
+	.headerMob {
+		width: 100%;
+		height: 9%;
+		position: fixed;
+		display: flex;
+		width: 100%;
+		align-items: center;
+		justify-content: space-around;
+		flex-direction: row;
+		padding: 2%;
+		background-color: $back-color;
+		grid-area: header;
+		color: white;
+		z-index: 3;
+		.header-brand {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			align-items: center;
+			max-width: 50%;
+			height: 100%;
+			.logo {
+				max-block-size: 2.5em; //70px;
+			}
+			span {
+				font-family: vis;
+				font-size: 2.5em;
+				letter-spacing: 0.4em;
+				margin-left: 2%;
+				color: white;
+				@media screen and (max-width: 375px) {
+					font-size: 2em;
+				}
+			}
+		}
+		.hamburgerButton {
+			width: 2.5rem;
+			border-radius: 0.25rem;
+			color: white;
+			white-space: nowrap;
+			text-decoration: none;
+			padding: 0.25rem 0.5rem;
+			margin: 0.25rem;
+			cursor: pointer;
+			background-color: white;
+			.logo {
+				color: white;
+			}
+		}
+	}
+
+	.hamburger-links {
+		display: none;
+		position: absolute;
+		top: 9%;
+		z-index: 2;
+		width: 100%;
+		height: 24%;
+		background-color: #2d323c;
+		.mobSearch {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			background-color: inherit;
+			padding: 10%;
+			border-radius: 2%;
+			width: 80%;
+			.mobSearchBar {
+				height: 2em;
+				width: 100%;
+				border-radius: 5%;
+				font-size: 1.4em;
+			}
+			.mobSearchButton {
+				position: relative;
+				width: 60%;
+				margin: 3% auto;
+				font-size: 1.3em;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				//margin-left:2%;
+				padding: 0.5em;
+				color: white;
+				background: linear-gradient(90deg, #ff3300, #3f19c7);
+				border-radius: 5%;
+				&:hover {
+					animation: gradiSearch 0.1s linear;
+					animation-fill-mode: both;
+				}
+			}
+		}
+	}
 }
