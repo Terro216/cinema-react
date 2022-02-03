@@ -5,7 +5,13 @@ function Error404() {
 		<div className="error404-wrapper">
 			<h2 className="error404-header">Страница не найдена :( </h2>
 			<p></p>
-			<input className="error404-button" type="button" onclick="history.back();" value="Вернуться назад" />
+			<a
+				className="error404-button"
+				type="button"
+				href="https://terro216.github.io/cinema-react/"
+				rel="noreferrer">
+				На главную
+			</a>
 		</div>
 	)
 }

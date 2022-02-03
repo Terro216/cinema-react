@@ -1,49 +1,49 @@
-@import '../App.scss';
+@import "../App.scss";
 
 .sidebar-wrapper {
-  background-color: $back-color;
-  border-left: 1px solid black;
-  grid-area: sidebar;
-  .genre-card,
-  .sidebar-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid white;
-    color: white;
-    h3 {
-      letter-spacing: 2px;
-    }
-  }
-  .sidebar-header {
-    background-color: $second-color;
-  }
-  .genre-card {
-    h3 {
-      letter-spacing: 2px;
-    }
-    &:hover {
-      animation: asideHover 0.1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-      animation-fill-mode: both;
-      animation-direction: alternate;
-    }
-  }
+	background-color: $main-color;
+	border-left: 1px solid black;
+	grid-area: sidebar;
+	.genre-card,
+	.sidebar-header {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: 1px solid white;
+		color: white;
+		h3 {
+			letter-spacing: 2px;
+		}
+	}
+	.sidebar-header {
+		background-color: $second-color;
+	}
+	.genre-card {
+		background-color: $main-color;
+		transition: all 0.1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+		h3 {
+			letter-spacing: 2px;
+		}
+		&:hover {
+			background-color: $third-color;
+		}
+	}
 }
 
 @media screen and (max-width: 550px) {
-  .sidebar-wrapper {
-    display: none;
-    position: absolute;
-    top: 33%;
-    width:100%;
-  }
+	.sidebar-wrapper {
+		display: none;
+		position: absolute;
+		top: 33%;
+		width: 100%;
+	}
 }
 
 @keyframes asideHover {
-  0% {
-    background-color: #2d323c;
-  }
-  100% {
-    background-color: #445a86;
-  }
+	0% {
+		background-color: #2d323c;
+	}
+	100% {
+		background-color: $third-color//#445a86;
+	}
 }
