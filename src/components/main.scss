@@ -1,7 +1,6 @@
 @import "../App.scss";
 
 .main-wrapper {
-	background-color: white;
 	grid-area: main;
 	width: 100%;
 	height: 100%;
@@ -18,6 +17,10 @@
 	align-items: flex-start;
 	flex-wrap: wrap;
 	align-content: space-around;
+	z-index: 1;
+	.notFound {
+		z-index: 2;
+	}
 	@media screen and (max-width: 550px) {
 		width: 100vw;
 		margin: 0 auto;

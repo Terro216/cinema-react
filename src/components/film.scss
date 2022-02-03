@@ -1,9 +1,14 @@
+$mob-width: 550px;
+
 .film-wrapper {
 	background-color: white;
 	grid-area: main;
 	width: 100%;
 	height: 100%;
 	padding-top: 5%;
+	@media screen and (max-width: $mob-width) {
+		padding-top: 20%;
+	}
 	.filmHeader {
 		display: flex;
 		flex-direction: column;
@@ -11,6 +16,9 @@
 		align-items: center;
 		.bigPoster {
 			max-width: 25%;
+			@media screen and (max-width: $mob-width) {
+				max-width: 60%;
+			}
 		}
 		.filmName {
 			display: flex;
@@ -20,6 +28,14 @@
 			text-align: center;
 			.filmQuote {
 				font-size: 0.75em;
+				@media screen and (max-width: $mob-width) {
+					display: flex;
+					max-width: 70%;
+					justify-content: center;
+					align-items: center;
+					text-align: center;
+					font-size: 0.7em;
+				}
 			}
 		}
 		.filmScore {
@@ -29,6 +45,11 @@
 			flex-direction: row;
 			width: 100%;
 			justify-content: space-around;
+			@media screen and (max-width: $mob-width) {
+				font-size: 1.6em;
+				flex-direction: column;
+				align-items: center;
+			}
 		}
 		.filmGenre {
 			font-size: 1em;
@@ -37,6 +58,9 @@
 			width: 100%;
 			justify-content: space-evenly;
 			align-items: center;
+			@media screen and (max-width: $mob-width) {
+				display: none;
+			}
 			.labelOut {
 				filter: drop-shadow(5px 6px 3px rgba(50, 50, 50, 1));
 				position: relative;
@@ -77,6 +101,9 @@
 		font-size: 1.3em;
 		padding: 2% 2% 4% 2%;
 		background-color: #d8dae3; //lightgrey;
+		@media screen and (max-width: $mob-width) {
+			font-size: 1.4em;
+		}
 	}
 	.filmFacts-wrapper {
 		.factsInfo {
@@ -91,16 +118,27 @@
 			align-items: center;
 			margin: 5% auto;
 			cursor: pointer;
+			@media screen and (max-width: $mob-width) {
+				width: 70%;
+				padding: 3%;
+				font-size: 1.4em;
+			}
 		}
 		.filmFacts {
 			font-size: 1.1em;
 			margin: 2% 2% 4% 2%;
 			padding: 5%;
 			background-color: lightgreen;
+			@media screen and (max-width: $mob-width) {
+				font-size: 1.2em;
+				margin: 0;
+			}
 		}
 	}
 	.similar-wrapper {
-		h2 {
+		.similar-header {
+			display: flex;
+			justify-content: center;
 			text-align: center;
 		}
 		.similar-content {
@@ -109,6 +147,9 @@
 			align-items: baseline;
 			flex-wrap: wrap;
 			margin-bottom: 2%;
+			@media screen and (max-width: $mob-width) {
+				margin: 0;
+			}
 			.card {
 				width: 120px;
 				height: 250px;

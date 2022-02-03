@@ -14,6 +14,7 @@
 	grid-area: header;
 	color: white;
 	z-index: 2;
+	user-select: none;
 	.header-brand {
 		display: flex;
 		justify-content: center;
@@ -21,6 +22,8 @@
 		width: 50%;
 		height: 100%;
 		.logo {
+			width: 70px;
+			height: 70px;
 			max-block-size: 3.6em; //70px;
 		}
 		span {
@@ -29,6 +32,9 @@
 			letter-spacing: 0.4em;
 			margin-left: 2%;
 			color: white;
+			@media screen and (max-width: 780px) {
+				font-size: 2em;
+			}
 		}
 	}
 	.search {
@@ -53,11 +59,35 @@
 			margin-left: 2%;
 			padding: 0.1em;
 			color: white;
-			background: linear-gradient(90deg, #ff3300, #3f19c7);
+			//background: linear-gradient(90deg, #ff3300, #3f19c7);
 			border-radius: 5%;
+			background-size: 100%;
+			background-image: linear-gradient(90deg, #ff3300, #3f19c7);
+			position: relative;
+			z-index: 10;
+			user-select: none;
+			&:before {
+				background-image: linear-gradient(270deg, #ff3300, #3f19c7);
+				content: "";
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				opacity: 0;
+				border-radius: 5%;
+				z-index: -10;
+				transition: opacity 0.4s;
+			}
 			&:hover {
-				animation: gradiSearch 0.1s linear;
-				animation-fill-mode: both;
+				&:before {
+					opacity: 1;
+				}
+			}
+			@media screen and (max-width: 780px) {
+				font-size: 1em;
+				margin: 0;
 			}
 		}
 	}
@@ -108,11 +138,14 @@
 	from {
 		background: linear-gradient(90deg, #ff3300, #3f19c7);
 	}
-	40% {
-		background: linear-gradient(150deg, #ff3300, #3f19c7);
+	25% {
+		background: linear-gradient(135deg, #ff3300, #3f19c7);
 	}
-	80% {
-		background: linear-gradient(210deg, #ff3300, #3f19c7);
+	50% {
+		background: linear-gradient(180deg, #ff3300, #3f19c7);
+	}
+	75% {
+		background: linear-gradient(225deg, #ff3300, #3f19c7);
 	}
 	to {
 		background: linear-gradient(270deg, #ff3300, #3f19c7);

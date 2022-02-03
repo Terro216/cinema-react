@@ -1,4 +1,4 @@
-function getFilm(page, type, keyword) {
+async function getFilm(page, type, keyword) {
 	let req
 	if (type === "top") {
 		req = `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=${keyword}&page=${page}`
@@ -13,7 +13,7 @@ function getFilm(page, type, keyword) {
 			"X-API-KEY": "37970845-fd94-4f47-877f-229c8ce46304",
 		}),
 	})
-	fetch(request)
+	let maxPages = await fetch(request)
 		.then((response) => {
 			if (response.ok) {
 				return response.json()
@@ -22,15 +22,15 @@ function getFilm(page, type, keyword) {
 			}
 		})
 		.then((data) => {
-			let maxPages = data.pagesCount
 			let wrapper = document.getElementsByClassName("cards")[0]
 			wrapper.innerHTML = ""
 			for (let i = 0; i < data.films.length; i++) {
 				let card = document.createElement("div")
 				card.className = "card"
+				//console.log(data.films[i])
 				card.innerHTML = `
             <a href="#/film/${data.films[i].filmId}">
-            <div class="imgWrapper"><img src='${data.films[i].posterUrlPreview}'></img></div>
+            <div class="imgWrapper"><img alt="${data.films[i].nameRu}" src='${data.films[i].posterUrlPreview}'></img></div>
             <h3 class="fn">${data.films[i].nameRu} (${data.films[i].year})</h3>
             </a>`
 				wrapper.appendChild(card)
@@ -41,11 +41,12 @@ function getFilm(page, type, keyword) {
 					document.getElementsByClassName("card")[i].style.marginBottom = h - 100 + "px"
 				}
 			}
-			return maxPages
+			return data.pagesCount
 		})
 		.catch((error) => {
 			return getFilm(1, type, keyword)
 		})
+	return maxPages
 }
 
 export default getFilm

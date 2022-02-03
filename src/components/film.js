@@ -1,4 +1,4 @@
-import "./filmduo.scss"
+import "./film.scss"
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import countriesJSON from "../scripts/countries.js"
