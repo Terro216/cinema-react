@@ -11,11 +11,25 @@ function Main(props) {
 
 	return (
 		<div className="main-wrapper">
-			<div className="cards">
-				<div className="notFound">
-					К сожалению, по данному запросу ничего не найдено :( <br></br> Напишите мне на почту
-				</div>
+			<div className="notFound">
+				<span>К сожалению, по данному запросу ничего не найдено :(</span>
+				<br></br>
+				<button
+					onClick={() => {
+						window.location.href = window.location.hostname
+					}}>
+					На главную
+				</button>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
 			</div>
+			<div className="cards"></div>
+
 			<div className="pageListWrapper">
 				<button
 					onClick={() => {

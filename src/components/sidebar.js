@@ -31,7 +31,7 @@ function Sidebar(props) {
 					header.innerHTML = "<h3>ЖАНРЫ</h3>"
 					wrapper.appendChild(header)
 					for (let i = 0; i < data.genres.length; i++) {
-						break // ТУТ НАДО ДОДЕЛАТЬ ПОКАЗ ЖАНРОВ
+						//break // ТУТ НАДО ДОДЕЛАТЬ ПОКАЗ ЖАНРОВ без запросов каждый раз - без перерендера
 						let genre = document.createElement("div")
 						genre.className = "genre"
 						genre.innerHTML = `
@@ -48,7 +48,7 @@ function Sidebar(props) {
 	})
 	return (
 		<aside className="sidebar-wrapper" onClick={props.tog}>
-			<div className="genres">.</div>
+			<div className="genres"></div>
 		</aside>
 	)
 }

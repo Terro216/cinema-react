@@ -54,6 +54,54 @@
 				color: white;
 			}
 		}
+		.hamburger-icon {
+			width: 3em;
+			height: 3em; //2.5em;
+			//border: 8px solid green;
+			position: relative;
+			transform: rotate(0deg);
+			transition: 0.5s ease-in-out;
+			cursor: pointer;
+			span {
+				display: block;
+				position: absolute;
+				height: 8px;
+				width: 100%;
+				//background: rgb(187, 152, 86);
+				background: white;
+				border-radius: 9px;
+				opacity: 1;
+				left: 0;
+				transform: rotate(0deg);
+				transition: 0.25s ease-in-out;
+				&:nth-child(1) {
+					top: 0px;
+				}
+				&:nth-child(2),
+				&:nth-child(3) {
+					top: 16px;
+				}
+				&:nth-child(4) {
+					top: 32px;
+				}
+			}
+		}
+		.open {
+			span {
+				&:nth-child(1),
+				&:nth-child(4) {
+					top: 16px;
+					width: 0%;
+					left: 50%;
+				}
+				&:nth-child(2) {
+					transform: rotate(45deg);
+				}
+				&:nth-child(3) {
+					transform: rotate(-45deg);
+				}
+			}
+		}
 	}
 
 	.hamburger-links {
@@ -66,7 +114,7 @@
 		background-color: #2d323c;
 		.mobSearch {
 			display: flex;
-			justify-content: center;
+			justify-content: space-around;
 			align-items: center;
 			flex-direction: column;
 			background-color: inherit;
@@ -81,9 +129,9 @@
 			}
 			.mobSearchButton {
 				position: relative;
-				width: 60%;
-				margin: 3% auto;
-				font-size: 1.3em;
+				width: 50%;
+				margin-top: 4%;
+				font-size: 1.4em;
 				display: flex;
 				justify-content: center;
 				align-items: center;
@@ -91,7 +139,7 @@
 				padding: 0.5em;
 				color: white;
 				background: linear-gradient(90deg, #ff3300, #3f19c7);
-				border-radius: 5%;
+				border-radius: 2%;
 				&:hover {
 					animation: gradiSearch 0.1s linear;
 					animation-fill-mode: both;
