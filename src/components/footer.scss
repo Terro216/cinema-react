@@ -4,7 +4,7 @@
 	background-color: $main-color;
 	grid-area: footer;
 	width: 100%;
-	padding: 2% 0 2% 0;
+	padding: 2% 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -19,7 +19,12 @@
 		margin-left: 5%;
 	}
 	@media screen and (max-width: 550px) {
-		font-size: 0.8em;
+		padding: 4% 0;
+		font-size: 0.94em;
 		min-height: 30px;
+		span,
+		.copy-link {
+			margin-left: 3%;
+		}
 	}
 }

@@ -22,6 +22,13 @@ async function getFilm(page, type, keyword) {
 			}
 		})
 		.then((data) => {
+			console.log(data)
+			if (type === "search" && data.pagesCount <= 0) {
+				//infinity error when not found searchong results
+				document.getElementById("notFound").style.display = "block"
+				document.getElementById("pageListWrapper").style.display = "none"
+				return 0
+			}
 			let wrapper = document.getElementsByClassName("cards")[0]
 			wrapper.innerHTML = ""
 			for (let i = 0; i < data.films.length; i++) {
@@ -44,7 +51,13 @@ async function getFilm(page, type, keyword) {
 			return data.pagesCount
 		})
 		.catch((error) => {
-			return getFilm(1, type, keyword)
+			console.log(error)
+			if (error == "loop") {
+				return 0
+			} else {
+				console.log("eeee")
+				return getFilm(1, type, keyword)
+			}
 		})
 	return maxPages
 }

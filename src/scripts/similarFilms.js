@@ -1,5 +1,6 @@
-function similarFilms(id) {
-	let hasSimilar = true
+function similarFilms(id, from) {
+	let i
+	let hasSim = true
 	let request = new Request(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/similars`, {
 		headers: new Headers({
 			accept: "application/json",
@@ -11,19 +12,23 @@ function similarFilms(id) {
 			if (response.ok) {
 				return response.json()
 			} else {
-				hasSimilar = false
+				hasSim = false
 				throw new Error("Something went wrong")
 			}
 		})
 		.then((data) => {
 			//console.log(data)
 			if (data.total === 0) {
-				hasSimilar = false
+				hasSim = false
 				document.getElementsByClassName("similar-wrapper")[0].style.display = "none"
 			} else {
 				let wrapper = document.getElementsByClassName("similar-content")[0]
-				wrapper.innerHTML = ""
-				for (let i = 0; i < data.total; i++) {
+				hasSim = from + 1 > data.total ? false : hasSim
+				for (i = from; i < from + 8; i++) {
+					if (i >= data.total || hasSim == false) {
+						hasSim = false
+						break
+					}
 					let card = document.createElement("div")
 					card.className = "card"
 					card.innerHTML = `
@@ -34,13 +39,19 @@ function similarFilms(id) {
                 </a>`
 					wrapper.appendChild(card)
 					let h = parseFloat(
-						getComputedStyle(document.getElementsByClassName("fn")[i], null).height.replace("px", "")
+						getComputedStyle(document.getElementsByClassName("fn")[i]).height.replace("px", "")
 					)
 					document.getElementsByClassName("card")[i].style.paddingBottom = h + "px"
 				}
 			}
+			if (hasSim === false) {
+				document.getElementsByClassName("controls-more")[0].disabled = true
+			}
 		})
-	return hasSimilar
+		.catch(() => {
+			document.getElementsByClassName("controls-more")[0].disabled = true
+		})
+	return from + 8
 }
 
 export default similarFilms

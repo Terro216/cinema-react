@@ -4,6 +4,7 @@
 	background-color: $main-color;
 	border-left: 1px solid black;
 	grid-area: sidebar;
+	z-index: 1;
 	.genre-card,
 	.sidebar-header {
 		display: flex;
@@ -20,7 +21,7 @@
 	}
 	.genre-card {
 		background-color: $main-color;
-		transition: all 0.1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+		transition: all 0.1s ease-in;
 		h3 {
 			letter-spacing: 2px;
 		}

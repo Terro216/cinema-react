@@ -6,16 +6,25 @@ import similarFilms from "../scripts/similarFilms.js"
 
 function Film() {
 	let { id } = useParams()
-
+	let curNum = 0
+	function updSimilar() {
+		curNum = similarFilms(id, curNum)
+	}
 	useEffect(() => {
 		//очистка всего, что остается при переходе с другого фильма:
 		document.getElementsByClassName("filmGenre")[0].innerHTML = ""
 		document.getElementsByClassName("filmFacts")[0].innerHTML = ""
+		document.getElementsByClassName("similar-content")[0].innerHTML = ""
 		document.getElementsByClassName("filmFacts")[0].style.display = "none"
 		document.getElementsByClassName("factsInfo")[0].style.display = "flex"
-
+		document.getElementsByClassName("controls-more")[0].disabled = false
 		let wrapper = document.getElementsByClassName("film")[0]
 		wrapper.innerHTML = ""
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		})
+
 		//player 1
 		let film = document.createElement("div")
 		let script = document.createElement("script")
@@ -58,16 +67,19 @@ function Film() {
 				}
 			})
 			.then((data) => {
-				//console.log(data)
+				console.log(data)
 				let kprating = data.rating.rating || "нет оценок"
 				let imdbrating = data.rating.ratingImdb || "нет оценок"
-				let criticsrating = data.rating.ratingFilmCritics || "нет оценок"
+				console.log(data.rating.ratingFilmCritics)
+				let criticsrating =
+					(data.rating.ratingFilmCriticsVoteCount === 0 ? "нет оценок" : data.rating.ratingFilmCritics) ||
+					"нет оценок"
 				document.getElementsByClassName(
 					"filmScore"
 				)[0].innerHTML = `<div>КиноПоиск: ${kprating}</div><div>IMDB: ${imdbrating}</div> <div>Критики: ${criticsrating}</div>`
 				data = data.data
-				document.getElementsByClassName("bigPoster")[0].src = data.posterUrl
-
+				document.getElementsByClassName("poster-img")[0].src = data.posterUrl
+				document.getElementsByClassName("poster-bg")[0].style.backgroundImage = `url("${data.posterUrl}")`
 				if (data.slogan !== null) {
 					document.getElementsByClassName(
 						"filmName"
@@ -125,17 +137,23 @@ function Film() {
 					document.getElementsByClassName("filmFacts-wrapper")[0].style.display = "none"
 				}
 
-				similarFilms(id)
+				updSimilar()
+
+				document.getElementsByClassName("film-wrapper")[0].style.opacity = "1"
 			})
 			.catch((error) => {
 				console.log(error)
+				window.location.href = window.location.hostname //если зайти в несуществующий фильм - выход на главную
 			})
 	})
 
 	return (
 		<div className="film-wrapper">
 			<div className="filmHeader">
-				<img className="bigPoster" alt="big poster"></img>
+				<div className="poster-wrapper">
+					<div className="poster-bg"></div>
+					<img className="poster-img" alt="big poster"></img>
+				</div>
 				<h1 className="filmName"> </h1>
 				<div className="filmGenre"></div>
 				<div className="filmScore"></div>
@@ -160,6 +178,18 @@ function Film() {
 			<div className="similar-wrapper">
 				<h2 className="similar-header">Похожие фильмы:</h2>
 				<div className="similar-content"></div>
+			</div>
+			<div className="controls">
+				<button className="controls-more" onClick={updSimilar}>
+					Ещё похожих
+				</button>
+				<button
+					className="controls-home"
+					onClick={() => {
+						window.location.href = window.location.hostname
+					}}>
+					На главную
+				</button>
 			</div>
 		</div>
 	)
