@@ -46,7 +46,12 @@ function Sidebar(props) {
 		}
 	})
 	return (
-		<aside className="sidebar-wrapper" onClick={props.tog}>
+		<aside
+			className="sidebar-wrapper"
+			onClick={() => {
+				props.tog()
+				document.getElementsByClassName("hamburger-icon")[0].classList.toggle("open")
+			}}>
 			<div className="genres"></div>
 		</aside>
 	)
