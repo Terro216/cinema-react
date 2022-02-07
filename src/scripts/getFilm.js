@@ -24,9 +24,9 @@ async function getFilm(page, type, keyword) {
 		.then((data) => {
 			console.log(data)
 			if (type === "search" && data.pagesCount <= 0) {
-				//infinity error when not found searchong results
-				document.getElementById("notFound").style.display = "block"
-				document.getElementById("pageListWrapper").style.display = "none"
+				document.getElementsByClassName("notFound")[0].style.display = "block"
+				document.getElementsByClassName("pageListWrapper")[0].style.display = "none"
+				document.getElementsByClassName("cards")[0].innerHTML = ""
 				return 0
 			}
 			let wrapper = document.getElementsByClassName("cards")[0]
@@ -52,12 +52,7 @@ async function getFilm(page, type, keyword) {
 		})
 		.catch((error) => {
 			console.log(error)
-			if (error == "loop") {
-				return 0
-			} else {
-				console.log("eeee")
-				return getFilm(1, type, keyword)
-			}
+			return getFilm(1, type, keyword)
 		})
 	return maxPages
 }

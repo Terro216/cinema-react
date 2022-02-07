@@ -5,14 +5,18 @@
 	width: 100%;
 	height: 100%;
 	padding: 2% 0 2% 0;
+	opacity: 1;
+	transform: translate(0);
+	transition: all 400ms;
 	.notFound {
 		display: none;
-		width: 100%;
+		margin: 0 auto;
+		width: 60%;
 		height: 30%;
 		padding-top: 10%;
 		font-size: 1.4em;
 		text-align: center;
-		span {
+		div {
 			border: 1px solid #000;
 			border-radius: 2%;
 			padding: 4%;
@@ -44,4 +48,13 @@
 			@include mainButton;
 		}
 	}
+}
+
+.hide-left {
+	opacity: 0;
+	transform: translate(-100%);
+}
+.hide-right {
+	opacity: 0;
+	transform: translate(100%);
 }

@@ -1,4 +1,5 @@
 import "./App.scss"
+import "animate.css"
 import Header from "./components/header.js"
 import HeaderMob from "./components/headerMob.js"
 import Main from "./components/main.js"
