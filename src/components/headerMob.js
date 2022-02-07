@@ -49,6 +49,7 @@ function HeaderMob(props) {
 						onClick={() => {
 							props.tog()
 							document.getElementsByClassName("hamburger-icon")[0].classList.toggle("open")
+							document.getElementsByClassName("cards")[0].innerHTML = ""
 						}}>
 						Поиск
 					</Link>

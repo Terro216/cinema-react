@@ -8,16 +8,17 @@ function Main(props) {
 	const [page, changePage] = useState(1)
 	let maxPages
 	useEffect(async () => {
+		animateCSS(".pageListWrapper", "fadeInUp").then(() => {
+			window.scrollTo(0, 0)
+		})
 		animateCSS(".main-wrapper", "fadeInUp").then(() => {
-			window.scrollTo({
-				top: 0,
-				behavior: "smooth",
-			})
+			window.scrollTo(0, 0)
 		})
 		document.getElementsByClassName("notFound")[0].style.display = "none"
 		maxPages = await getFilm(page, props.match.params.type, props.match.params.keyword)
 	})
 	useEffect(() => {
+		window.scrollTo(0, 0)
 		document.querySelector(".main-wrapper").style.setProperty("--animate-duration", "0.5s")
 	}, [])
 
@@ -34,7 +35,7 @@ function Main(props) {
 				<br></br>
 				<button
 					onClick={() => {
-						window.location.href = window.location.hostname
+						window.location = "https://terro216.github.io/cinema-react/#/top/TOP_250_BEST_FILMS"
 					}}>
 					На главную
 				</button>
@@ -54,7 +55,7 @@ function Main(props) {
 						window.scrollTo(0, 0)
 						page - 1 >= 1 ? changePage(page - 1) : changePage(maxPages)
 						animateCSS(".main-wrapper", "fadeOutRight").then(() => {
-							animateCSS(".cards", "fadeInLeft") //WHY HEADER GO BIG
+							animateCSS(".cards", "fadeInLeft")
 						})
 					}}
 					className="pageListButton">
@@ -62,10 +63,7 @@ function Main(props) {
 				</button>
 				<button
 					onClick={() => {
-						window.scrollTo({
-							top: 0,
-							behavior: "smooth",
-						})
+						window.scrollTo(0, 0)
 						changePage(1)
 					}}
 					className="pageListButton">

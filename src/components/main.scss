@@ -27,6 +27,17 @@
 			font-size: 1em;
 			height: max-content;
 		}
+		@media screen and (max-width: 550px) {
+			width: 100%;
+			font-size: 1.2em;
+			margin-top: 10%;
+			button {
+				@include mainButton;
+				margin-top: 10%;
+				font-size: 1em;
+				height: max-content;
+			}
+		}
 	}
 
 	.cards {

@@ -42,6 +42,7 @@ function Header() {
 					to={`/search/${search}`}
 					onClick={() => {
 						document.getElementsByClassName("searchBar")[0].value = ""
+						document.getElementsByClassName("cards")[0].innerHTML = ""
 					}}>
 					Поиск
 				</Link>
