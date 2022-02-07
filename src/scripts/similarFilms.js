@@ -25,7 +25,7 @@ function similarFilms(id, from) {
 				let wrapper = document.getElementsByClassName("similar-content")[0]
 				hasSim = from + 1 > data.total ? false : hasSim
 				for (i = from; i < from + 8; i++) {
-					if (i >= data.total || hasSim == false) {
+					if (i >= data.total || hasSim === false) {
 						hasSim = false
 						break
 					}

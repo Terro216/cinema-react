@@ -31,13 +31,12 @@ function Sidebar(props) {
 					header.innerHTML = "<h3>ЖАНРЫ</h3>"
 					wrapper.appendChild(header)
 					for (let i = 0; i < data.genres.length; i++) {
-						//break // ТУТ НАДО ДОДЕЛАТЬ ПОКАЗ ЖАНРОВ без запросов каждый раз - без перерендера
 						let genre = document.createElement("div")
 						genre.className = "genre"
 						genre.innerHTML = `
-            <a class="genre-card" href="#/genre/${data.genres[i].id}">
-            <h3>${up(data.genres[i].genre)}</h3>
-            </a>`
+						<a class="genre-card" href="#/genre/${data.genres[i].id}">
+            				<h3>${up(data.genres[i].genre)}</h3>
+            			</a>`
 						wrapper.appendChild(genre)
 					}
 				})

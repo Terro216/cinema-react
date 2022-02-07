@@ -6,15 +6,14 @@
 	}
 	margin-bottom: 10%;
 	.headerMob {
-		width: 100%;
-		height: 9%;
+		width: 100vw;
+		height: 9vh;
 		position: fixed;
 		display: flex;
-		width: 100%;
 		align-items: center;
 		justify-content: space-around;
 		flex-direction: row;
-		padding: 2%;
+		padding: 2vw;
 		background-color: $main-color;
 		grid-area: header;
 		color: white;

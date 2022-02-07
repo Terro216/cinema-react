@@ -1,4 +1,5 @@
 import "./film.scss"
+import animateCSS from "../scripts/animate.js"
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import countriesJSON from "../scripts/countries.js"
@@ -24,6 +25,7 @@ function Film() {
 			top: 0,
 			behavior: "smooth",
 		})
+		document.querySelector(".film-wrapper").style.display = "none"
 
 		//player 1
 		let film = document.createElement("div")
@@ -138,8 +140,9 @@ function Film() {
 				}
 
 				updSimilar()
-
-				document.getElementsByClassName("film-wrapper")[0].style.opacity = "1"
+				//document.querySelector(".film-wrapper").style.setProperty("--animate-duration", "0.8s")
+				document.querySelector(".film-wrapper").style.display = "block"
+				animateCSS(".film-wrapper", "fadeIn")
 			})
 			.catch((error) => {
 				console.log(error)

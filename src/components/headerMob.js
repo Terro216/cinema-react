@@ -1,6 +1,6 @@
 import "./headerMob.scss"
+import animateCSS from "../scripts/animate.js"
 import logo from "../logo.svg"
-import hamburger from "../hamburger.svg"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
@@ -24,8 +24,8 @@ function HeaderMob(props) {
 					className="hamburger-icon"
 					onClick={(e) => {
 						props.tog()
-						//e.target.parentNode.classList.toggle("open")
 						document.getElementsByClassName("hamburger-icon")[0].classList.toggle("open")
+						animateCSS(".sidebar-wrapper", "slideInDown")
 					}}>
 					<span></span>
 					<span></span>
