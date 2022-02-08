@@ -55,7 +55,16 @@
 		}
 	}
 	.pageListWrapper {
+		width: 100%;
+		height: auto;
+		margin: 2% 0 2% 0;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-around;
 		.pageListButton {
+			padding: 1%;
+			font-size: 1.2em;
 			@include mainButton;
 		}
 	}

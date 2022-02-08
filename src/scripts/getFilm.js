@@ -33,7 +33,6 @@ async function getFilm(page, type, keyword) {
 			for (let i = 0; i < data.films.length; i++) {
 				let card = document.createElement("div")
 				card.className = "card"
-				console.log(data.films[i])
 				card.innerHTML = `
             <a href="#/film/${data.films[i].filmId}">
             <div class="imgWrapper"><img alt="${data.films[i].nameRu}" src='${data.films[i].posterUrlPreview}'></img></div>

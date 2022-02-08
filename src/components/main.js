@@ -8,19 +8,13 @@ function Main(props) {
 	const [page, changePage] = useState(1)
 	let maxPages
 	useEffect(async () => {
-		animateCSS(".pageListWrapper", "fadeInUp").then(() => {
-			window.scrollTo(0, 0)
-		})
+		animateCSS(".pageListWrapper", "fadeInUp")
 		animateCSS(".main-wrapper", "fadeInUp").then(() => {
 			window.scrollTo(0, 0)
 		})
 		document.getElementsByClassName("notFound")[0].style.display = "none"
 		maxPages = await getFilm(page, props.match.params.type, props.match.params.keyword)
 	})
-	useEffect(() => {
-		window.scrollTo(0, 0)
-		document.querySelector(".main-wrapper").style.setProperty("--animate-duration", "0.5s")
-	}, [])
 
 	return (
 		<div className="main-wrapper">
