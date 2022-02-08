@@ -2,9 +2,26 @@
 <p>
 </p>
 
-> Free online movie theater
+> Free online movie theater based on react+scss stack
 
 ### 🏠 [Homepage](https://terro216.github.io/cinema-react/)
+
+## Screenshots
+<details><summary>PC version</summary>
+![main page](screenshots/main.jpg)
+![film page](screenshots/forest.jpg)
+</details>
+<details><summary>Mobile version</summary>
+![main page](screenshots/mainMob.jpg)
+![film page](screenshots/forestMob.jpg)
+</details>
+
+## Features
+You can:
+- View the top 250 best films list
+- Find a movie by keyword
+- Watch the best movies by a popular genres
+- Literraly watch any film and read his description and interesting facts
 
 ## Install
 
@@ -20,9 +37,9 @@ npm start
 
 ## Author
 
-👤 **ilya med**
+🦔 **ilya med**
 
-* Website: ilyamed.site
+* Website: [ilyamed.site](ilyamed.site)
 * Github: [@Terro216](https://github.com/Terro216)
 
 ## 🤝 Contributing
@@ -31,7 +48,4 @@ Contributions, issues and feature requests are welcome!<br />Feel free to check 
 
 ## Show your support
 
-Give a ⭐️ if this project helped you!
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+Give a ⭐️ if you liked this project!
