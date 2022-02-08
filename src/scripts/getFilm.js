@@ -22,7 +22,6 @@ async function getFilm(page, type, keyword) {
 			}
 		})
 		.then((data) => {
-			console.log(data)
 			if (type === "search" && data.pagesCount <= 0) {
 				document.getElementsByClassName("notFound")[0].style.display = "block"
 				document.getElementsByClassName("pageListWrapper")[0].style.display = "none"
@@ -34,7 +33,7 @@ async function getFilm(page, type, keyword) {
 			for (let i = 0; i < data.films.length; i++) {
 				let card = document.createElement("div")
 				card.className = "card"
-				//console.log(data.films[i])
+				console.log(data.films[i])
 				card.innerHTML = `
             <a href="#/film/${data.films[i].filmId}">
             <div class="imgWrapper"><img alt="${data.films[i].nameRu}" src='${data.films[i].posterUrlPreview}'></img></div>

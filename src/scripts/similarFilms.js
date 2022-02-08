@@ -33,7 +33,7 @@ function similarFilms(id, from) {
 					card.className = "card"
 					card.innerHTML = `
                 <a href="#/film/${data.items[i].filmId}">
-                <div class="imgWrapper"><img src='${data.items[i].posterUrlPreview}'></img></div>
+                <div class="imgWrapper"><img alt="${data.items[i].nameRu}" src='${data.items[i].posterUrlPreview}'></img></div>
                 <br>
                 <h3 class='fn'>${data.items[i].nameRu}</h3>
                 </a>`
