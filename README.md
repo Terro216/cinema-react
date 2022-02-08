@@ -9,10 +9,12 @@
 ## Screenshots
 <details><summary>PC version</summary>
 ![main page](screenshots/main.jpg)
+  <br/>
 ![film page](screenshots/forest.jpg)
 </details>
 <details><summary>Mobile version</summary>
 ![main page](screenshots/mainMob.jpg)
+  <br/>
 ![film page](screenshots/forestMob.jpg)
 </details>
 
@@ -39,7 +41,7 @@ npm start
 
 🦔 **ilya med**
 
-* Website: [ilyamed.site](ilyamed.site)
+* Website: [https://ilyamed.site/](ilyamed.site)
 * Github: [@Terro216](https://github.com/Terro216)
 
 ## 🤝 Contributing
