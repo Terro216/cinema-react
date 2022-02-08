@@ -34,7 +34,6 @@ function Ilyam() {
 	}
 	function getOneFilm(id) {
 		counter += 1
-		//let request = new Request(`https://icy-river-97ee.ilyamed.workers.dev/?https://kinopoiskapiunofficial.tech/api/v2.1/films/${id}`,{
 		let request = new Request(`https://kinopoiskapiunofficial.tech/api/v2.1/films/${id}`, {
 			headers: new Headers({
 				accept: "application/json",

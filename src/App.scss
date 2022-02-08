@@ -15,7 +15,14 @@ $button-color: #68696e;
 		"footer footer footer footer";
 	width: 100%;
 	height: 100%;
-	//overflow-x: hidden;
+	@media screen and (max-width: 550px) {
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto 1px; /*auto 1fr auto;*/
+		grid-template-areas:
+			"header header header"
+			"main main sidebar"
+			"footer footer footer";
+	}
 }
 
 a,
@@ -62,35 +69,6 @@ input {
 		width: calc(100% / 3);
 		height: calc(100% / 3);
 	}
-}
-
-@media screen and (max-width: 550px) {
-	.App {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: auto auto 1px; /*auto 1fr auto;*/
-		grid-template-areas:
-			"header header header"
-			"main main sidebar"
-			"footer footer footer";
-		width: 100%;
-		height: 100%;
-	}
-}
-
-.pageListWrapper {
-	width: 100%;
-	height: auto;
-	margin: 2% 0 2% 0;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-around;
-}
-
-.pageListButton {
-	padding: 1%;
-	font-size: 1.2em;
 }
 
 @mixin mainButton {

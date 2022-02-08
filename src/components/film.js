@@ -69,10 +69,8 @@ function Film() {
 				}
 			})
 			.then((data) => {
-				console.log(data)
 				let kprating = data.rating.rating || "нет оценок"
 				let imdbrating = data.rating.ratingImdb || "нет оценок"
-				console.log(data.rating.ratingFilmCritics)
 				let criticsrating =
 					(data.rating.ratingFilmCriticsVoteCount === 0 ? "нет оценок" : data.rating.ratingFilmCritics) ||
 					"нет оценок"
@@ -189,7 +187,7 @@ function Film() {
 				<button
 					className="controls-home"
 					onClick={() => {
-						window.location.href = window.location.hostname
+						window.location.href = window.location.origin
 					}}>
 					На главную
 				</button>
