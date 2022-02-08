@@ -8,14 +8,12 @@
 
 ## Screenshots
 <details><summary>PC version</summary>
-![main page](screenshots/main.jpg)
-  <br/>
-![film page](screenshots/forest.jpg)
+<img src="screenshots/main.jpg" width="45%"></img>
+<img src="screenshots/forest.jpg" width="45%"></img>
 </details>
 <details><summary>Mobile version</summary>
-![main page](screenshots/mainMob.jpg)
-  <br/>
-![film page](screenshots/forestMob.jpg)
+<img src="screenshots/mainMob.jpg" width="45%"></img>
+<img src="screenshots/forestMob.jpg" width="45%"></img>
 </details>
 
 ## Features
@@ -26,6 +24,8 @@ You can:
 - Literraly watch any film and read his description and interesting facts
 
 ## Install
+
+Copy the repository and
 
 ```sh
 npm install
@@ -41,7 +41,7 @@ npm start
 
 🦔 **ilya med**
 
-* Website: [https://ilyamed.site/](ilyamed.site)
+* Website: [ilyamed.site](https://ilyamed.site/)
 * Github: [@Terro216](https://github.com/Terro216)
 
 ## 🤝 Contributing
