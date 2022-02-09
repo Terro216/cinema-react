@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/cinema-react/static/css/main.5893e4e2.chunk.css",
+    "main.css": "/cinema-react/static/css/main.c6e6664e.chunk.css",
     "main.js": "/cinema-react/static/js/main.d2941aa1.chunk.js",
     "main.js.map": "/cinema-react/static/js/main.d2941aa1.chunk.js.map",
     "runtime-main.js": "/cinema-react/static/js/runtime-main.232851c6.js",
@@ -10,7 +10,7 @@
     "static/js/2.61ba998c.chunk.js.map": "/cinema-react/static/js/2.61ba998c.chunk.js.map",
     "index.html": "/cinema-react/index.html",
     "static/css/2.a1596f27.chunk.css.map": "/cinema-react/static/css/2.a1596f27.chunk.css.map",
-    "static/css/main.5893e4e2.chunk.css.map": "/cinema-react/static/css/main.5893e4e2.chunk.css.map",
+    "static/css/main.c6e6664e.chunk.css.map": "/cinema-react/static/css/main.c6e6664e.chunk.css.map",
     "static/js/2.61ba998c.chunk.js.LICENSE.txt": "/cinema-react/static/js/2.61ba998c.chunk.js.LICENSE.txt",
     "static/media/index.css": "/cinema-react/static/media/vis.0999fa29.ttf",
     "static/media/logo.10b5322e.svg": "/cinema-react/static/media/logo.10b5322e.svg"
@@ -19,7 +19,7 @@
     "static/js/runtime-main.232851c6.js",
     "static/css/2.a1596f27.chunk.css",
     "static/js/2.61ba998c.chunk.js",
-    "static/css/main.5893e4e2.chunk.css",
+    "static/css/main.c6e6664e.chunk.css",
     "static/js/main.d2941aa1.chunk.js"
   ]
 }
