@@ -1,13 +1,7 @@
 import "./footer.scss"
-import animateCSS from "../scripts/animate.js"
 import { Link } from "react-router-dom"
-import { useEffect } from "react"
 
 function Footer() {
-	useEffect(() => {
-		document.querySelector(".footer-wrapper").style.display = "flex"
-		animateCSS(".footer-wrapper", "fadeInUp")
-	})
 	return (
 		<footer className="footer-wrapper">
 			<span>&copy; 2021-2022</span>
