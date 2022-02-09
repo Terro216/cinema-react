@@ -8,8 +8,12 @@ function Main(props) {
 	const [page, changePage] = useState(1)
 	let maxPages
 	useEffect(async () => {
+		window.scrollTo(0, 0)
+		document.querySelector(".main-wrapper").style.setProperty("--animate-duration", ".4s")
+		document.querySelector(".cards").style.setProperty("--animate-duration", ".4s")
 		animateCSS(".pageListWrapper", "fadeInUp")
 		animateCSS(".main-wrapper", "fadeInUp").then(() => {
+			document.querySelector(".footer-wrapper").style.display = "flex"
 			window.scrollTo(0, 0)
 		})
 		document.getElementsByClassName("notFound")[0].style.display = "none"
