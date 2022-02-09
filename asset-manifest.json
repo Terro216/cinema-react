@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/cinema-react/static/css/main.5893e4e2.chunk.css",
-    "main.js": "/cinema-react/static/js/main.746dbdbc.chunk.js",
-    "main.js.map": "/cinema-react/static/js/main.746dbdbc.chunk.js.map",
+    "main.js": "/cinema-react/static/js/main.677a4156.chunk.js",
+    "main.js.map": "/cinema-react/static/js/main.677a4156.chunk.js.map",
     "runtime-main.js": "/cinema-react/static/js/runtime-main.232851c6.js",
     "runtime-main.js.map": "/cinema-react/static/js/runtime-main.232851c6.js.map",
     "static/css/2.a1596f27.chunk.css": "/cinema-react/static/css/2.a1596f27.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.a1596f27.chunk.css",
     "static/js/2.61ba998c.chunk.js",
     "static/css/main.5893e4e2.chunk.css",
-    "static/js/main.746dbdbc.chunk.js"
+    "static/js/main.677a4156.chunk.js"
   ]
 }
