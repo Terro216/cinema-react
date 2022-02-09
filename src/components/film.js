@@ -1,5 +1,6 @@
 import "./film.scss"
 import animateCSS from "../scripts/animate.js"
+import Parallax from "parallax-js"
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import countriesJSON from "../scripts/countries.js"
@@ -146,6 +147,12 @@ function Film() {
 				console.log(error)
 				window.location.href = window.location.hostname //если зайти в несуществующий фильм - выход на главную
 			})
+
+		let scene = document.querySelector(".poster-img-wrapper")
+		const parallaxInstance = new Parallax(scene, {
+			relativeInput: true,
+		})
+		console.log(window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth)
 	})
 
 	return (
@@ -153,7 +160,16 @@ function Film() {
 			<div className="filmHeader">
 				<div className="poster-wrapper">
 					<div className="poster-bg"></div>
-					<img className="poster-img" alt="big poster"></img>
+					<div className="poster-img-wrapper">
+						<img
+							data-depth={
+								(window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) > 600
+									? "0.15"
+									: "0.55"
+							}
+							className="poster-img"
+							alt="big poster"></img>
+					</div>
 				</div>
 				<h1 className="filmName"> </h1>
 				<div className="filmGenre"></div>
