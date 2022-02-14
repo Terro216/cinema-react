@@ -203,7 +203,7 @@ function Film() {
 				<button
 					className="controls-home"
 					onClick={() => {
-						window.location.href = window.location.hostname
+						window.location.href = ""
 					}}>
 					На главную
 				</button>
