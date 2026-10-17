@@ -10,7 +10,10 @@ Vite and Dart Sass with a lockfile and pinned Docker bases.
 
 265 real films (Top 250 plus the old personal list), posters, descriptions,
 ratings, facts and flags are included in the repository. Catalog, search,
-genres, pagination and recommendations work without the legacy API.
+genres, pagination and recommendations use live metadata, with this complete
+saved collection as an automatic fallback during API outages.
+The existing API key is used only by an allowlisted nginx proxy; it is absent
+from the browser bundle. No application database or data backup is needed.
 External movie players are currently unavailable; their optional integrations
 are isolated from the rest of the site.
 
@@ -23,7 +26,7 @@ npm run build
 
 Use Node >=22.12. In the server tree these commands run on big-one via shims.
 
-[Restoration baseline](docs/RESTORATION.md) · [Deployment, rollback, recovery](docs/DEPLOYMENT.md) · [Release evidence](docs/RELEASE.md)
+[Restoration baseline](docs/RESTORATION.md) · [Deployment, rollback, recovery](docs/DEPLOYMENT.md) · [Live API release](docs/LIVE-API.md) · [Initial release evidence](docs/RELEASE.md)
 
 Original screenshots remain in `screenshots/`. Original source commit:
 `7bcc2e2c2c3b312c94b5991b1cc9e4b1a2b38d42`.

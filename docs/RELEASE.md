@@ -1,4 +1,7 @@
-# Restored Cinema — 17 October 2026
+# Initial Cinema release evidence — 17 October 2026
+
+Superseded by the [live API correction](LIVE-API.md): live metadata is primary,
+and the saved collection below is now the outage fallback.
 
 Live: **https://cinema.ilyamedve.dev/**
 
@@ -112,11 +115,10 @@ No persistent app data or new secrets. Recovery from the remote Git branch and
 pinned image is sufficient; Cinema is intentionally excluded from DE app-data
 Restic. Active DE receipts verified: 17 October 16:48–16:49 UTC, 8 snapshots,
 199,779,818 bytes, data_check/restore_verify/result all OK. Paused Yandex jobs
-were not enabled. A fresh encrypted recovery export requires sudo under the
-server AGENTS rule; owner authorization was requested and is pending. The
-existing fresh export is unchanged. The owner must update the existing
-`Server recovery: DE + big-one` attachment/date via their personal client;
-that manual handoff has not been confirmed.
+were not enabled. No separate app-data backup or fresh recovery export is required: the same
+historical API credential is recoverable from the original Git commit. There
+is no new credential or application state. The earlier request for a common
+recovery export was unnecessary and is withdrawn.
 
 The saved catalog is finite and ratings are a snapshot. Films outside it show
 an informative message; updates are deliberate, not scheduled. Playback is

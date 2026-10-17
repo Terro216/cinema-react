@@ -9,7 +9,8 @@ in `screenshots/`, animate.css 4 and parallax-js 3. React 17 and HashRouter 5
 remain. Build tooling changes from CRA 4/node-sass 5 to Vite/Dart Sass to
 build on supported Node 22 without native Python/LibSass dependencies.
 
-Runtime metadata and players are independent. The bundled catalog contains
+Runtime metadata and players are independent. Live metadata is the primary
+source; the saved collection is used automatically during API failures. The bundled catalog contains
 real API metadata and locally saved posters. No API key is shipped to browsers.
 Catalog, search, genre filters, pagination, details, facts and recommendations
 work without external network access. Ratings describe the saved snapshot.

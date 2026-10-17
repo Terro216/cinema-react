@@ -1,0 +1,60 @@
+import assert from 'node:assert/strict'
+import { chromium } from 'playwright'
+import { mkdirSync, writeFileSync, readFileSync } from 'node:fs'
+const base = (process.argv[2] || 'http://127.0.0.1:18177').replace(/\/$/, '')
+const output = process.argv[3] || '/tmp/cinema-live-qa'
+mkdirSync(output, { recursive: true })
+const saved = JSON.parse(readFileSync(new URL('../public/data/catalog.json', import.meta.url)))
+const savedIds = new Set(saved.films.map(f => String(f.id)))
+const browser = await chromium.launch({ headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] })
+const report = { base, checks: [], api: [], errors: [] }
+const check = (name, condition = true) => { assert.ok(condition, name); report.checks.push(name) }
+const context = await browser.newContext({ viewport: { width: 1280, height: 900 } })
+const page = await context.newPage()
+page.on('pageerror', e => report.errors.push(e.message))
+page.on('response', r => { if (new URL(r.url()).pathname.startsWith('/api/')) report.api.push({ path: new URL(r.url()).pathname, status: r.status() }) })
+const ready = async (selector = '.main-wrapper') => { await page.locator(selector + '[data-metadata-source="live"]').waitFor({ timeout: 20000 }); await page.waitForTimeout(500) }
+try {
+  await page.goto(base + '/'); await ready()
+  check('real API catalog is primary', await page.locator('.cards .card').count() === 20)
+  check('fallback note absent while API works', await page.locator('.source-note').count() === 0)
+  await page.locator('.searchBar').fill('Дюна'); await page.locator('.searchBar').press('Enter'); await ready()
+  const hrefs = await page.locator('.cards a').evaluateAll(nodes => nodes.map(a => a.getAttribute('href')))
+  check('live search includes movies outside saved 265', hrefs.some(h => !savedIds.has(h.split('/').pop())))
+  check('search has live pagination', await page.getByRole('button', { name: 'Вперед', exact: true }).isEnabled())
+  await page.getByRole('button', { name: 'Вперед', exact: true }).click(); await ready()
+  check('live search page two', page.url().endsWith('?page=2'))
+  await page.goBack(); await ready(); check('back restores live search first page', !page.url().endsWith('?page=2'))
+  await page.goto(base + '/#/film/4540126'); await ready('.film-wrapper')
+  check('unsaved film opens by direct URL', !savedIds.has('4540126') && (await page.locator('.filmName').innerText()).includes('Дюна'))
+  check('unsaved film has real description and ratings', (await page.locator('.filmDescription').innerText()).length > 100 && /КиноПоиск: [0-9]/.test(await page.locator('.filmScore').innerText()))
+  await page.waitForFunction(() => document.querySelector('.poster-img')?.complete && document.querySelector('.poster-img').naturalWidth > 0)
+  check('real unsaved poster loads')
+  await page.locator('.similar-wrapper[data-metadata-source="live"]').waitFor({ timeout: 15000 })
+  check('similar movies come from live API', await page.locator('.similar-content .card').count() > 0)
+  await page.screenshot({ path: output + '/live-film.png', fullPage: true, animations: 'disabled' })
+  await page.goto(base + '/#/genre/13'); await ready(); check('live genre filter works')
+  await page.goto(base + '/#/film/999999999'); await page.getByRole('heading', { name: 'Фильм не найден.' }).waitFor()
+  check('real API missing film keeps its URL', page.url().endsWith('#/film/999999999'))
+  await page.goto(base + '/#/film/448'); await ready('.film-wrapper'); check('404 does not disable healthy API')
+  const offline = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true })
+  let attempts = 0, unavailable = true
+  await offline.route('**/api/**', route => { if (unavailable) { attempts++; return route.fulfill({ status: 503, body: '{}' }) } return route.continue() })
+  const phone = await offline.newPage(); phone.on('pageerror', e => report.errors.push(e.message))
+  await phone.goto(base + '/'); await phone.locator('.main-wrapper[data-metadata-source="saved"]').waitFor()
+  check('unavailable API automatically uses full saved catalog', await phone.locator('.cards .card').count() === 20)
+  await phone.getByRole('button', { name: 'Поиск и жанры' }).tap(); await phone.locator('.mobSearchBar').fill('Форрест'); await phone.locator('.mobSearchButton').tap()
+  await phone.locator('.cards a').first().waitFor(); await phone.waitForTimeout(500); await phone.locator('.cards a').first().tap()
+  await phone.locator('.film-wrapper[data-metadata-source="saved"]').waitFor(); check('touch search and film work during API failure', (await phone.locator('.filmName').innerText()).includes('Форрест'))
+  await phone.waitForTimeout(1000); check('no automatic repeated failed requests', attempts === 1)
+  await phone.screenshot({ path: output + '/fallback-mobile.png', fullPage: true, animations: 'disabled' })
+  await phone.goto(base + '/#/film/4540126'); await phone.getByText('Не удалось получить фильм. Попробуйте позже.').waitFor()
+  check('unsaved film gets a useful offline state', phone.url().endsWith('#/film/4540126'))
+  unavailable = false; await phone.getByRole('button', { name: 'Повторить', exact: true }).tap(); await phone.locator('.film-wrapper[data-metadata-source="live"]').waitFor({ timeout: 20000 })
+  check('explicit retry recovers live API without a page redirect')
+  await phone.screenshot({ path: output + '/live-mobile.png', fullPage: true, animations: 'disabled' })
+  await offline.close()
+  check('no application errors', report.errors.length === 0)
+  check('requests actually reached the live proxy', report.api.some(r => r.status === 200 && r.path.includes('search-by-keyword')) && report.api.some(r => r.path.endsWith('/similars')))
+} catch (error) { report.failure = error.stack; await page.screenshot({ path: output + '/failure.png', fullPage: true }).catch(() => {}); throw error }
+finally { writeFileSync(output + '/report.json', JSON.stringify(report, null, 2)); console.log(JSON.stringify(report)); await browser.close() }

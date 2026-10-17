@@ -5,7 +5,10 @@ services:
       context: .
       args:
         SOURCE_REVISION: ${CINEMA_REVISION:-unknown}
-    image: ${CINEMA_IMAGE:-cinema-react:restored-20261017}
+    image: ${CINEMA_IMAGE:-cinema-react:live-20261017}
+    env_file:
+      - path: .env
+        required: false
     container_name: cinema-react
     restart: unless-stopped
     read_only: true

@@ -1,0 +1,68 @@
+{
+  "base": "http://127.0.0.1:18177",
+  "checks": [
+    "real API catalog is primary",
+    "fallback note absent while API works",
+    "live search includes movies outside saved 265",
+    "search has live pagination",
+    "live search page two",
+    "back restores live search first page",
+    "unsaved film opens by direct URL",
+    "unsaved film has real description and ratings",
+    "real unsaved poster loads",
+    "similar movies come from live API",
+    "live genre filter works",
+    "real API missing film keeps its URL",
+    "404 does not disable healthy API",
+    "unavailable API automatically uses full saved catalog",
+    "touch search and film work during API failure",
+    "no automatic repeated failed requests",
+    "unsaved film gets a useful offline state",
+    "explicit retry recovers live API without a page redirect",
+    "no application errors",
+    "requests actually reached the live proxy"
+  ],
+  "api": [
+    {
+      "path": "/api/v2.1/films/filters",
+      "status": 200
+    },
+    {
+      "path": "/api/v2.2/films/top",
+      "status": 200
+    },
+    {
+      "path": "/api/v2.1/films/search-by-keyword",
+      "status": 200
+    },
+    {
+      "path": "/api/v2.1/films/search-by-keyword",
+      "status": 200
+    },
+    {
+      "path": "/api/v2.1/films/4540126",
+      "status": 200
+    },
+    {
+      "path": "/api/v2.2/films/4540126/similars",
+      "status": 200
+    },
+    {
+      "path": "/api/v2.1/films/search-by-filters",
+      "status": 200
+    },
+    {
+      "path": "/api/v2.1/films/999999999",
+      "status": 400
+    },
+    {
+      "path": "/api/v2.1/films/448",
+      "status": 200
+    },
+    {
+      "path": "/api/v2.2/films/448/similars",
+      "status": 200
+    }
+  ],
+  "errors": []
+}

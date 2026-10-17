@@ -12,9 +12,11 @@ FROM nginx:stable-alpine@sha256:970364228b1e4f932abc22d321932816782cca8a20b85a77
 ARG SOURCE_REVISION=unknown
 LABEL org.opencontainers.image.source="https://github.com/Terro216/cinema-react" \
       org.opencontainers.image.revision="$SOURCE_REVISION"
-COPY deploy/nginx.conf /etc/nginx/nginx.conf
+COPY deploy/nginx.conf /etc/nginx/cinema.conf.template
+COPY deploy/proxy.conf /etc/nginx/cinema-proxy.conf
+COPY --chmod=755 deploy/entrypoint.sh /usr/local/bin/cinema-entrypoint
 COPY --from=build /app/dist /usr/share/nginx/html
 USER nginx
 EXPOSE 8080
-ENTRYPOINT ["nginx"]
+ENTRYPOINT ["/usr/local/bin/cinema-entrypoint"]
 CMD ["-g", "daemon off;"]

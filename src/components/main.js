@@ -2,6 +2,7 @@ import './main.scss'
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation, useHistory, useParams } from 'react-router-dom'
 import useCatalog from '../data/useCatalog.js'
+import useMetadata from '../data/useMetadata.js'
 import Card from './card.js'
 import animateCSS from '../scripts/animate.js'
 export default function Main({ favorites = false }) {
@@ -11,13 +12,14 @@ export default function Main({ favorites = false }) {
   const { repository, error, retry } = useCatalog()
   const [moving, setMoving] = useState(false)
   const requested = new URLSearchParams(location.search).get('page') || 1
-  const result = repository?.list({ type: favorites ? 'favorites' : type, keyword, page: requested })
+  const { data: result } = useMetadata('list', [{ type: favorites ? 'favorites' : type, keyword, page: requested }])
   useEffect(() => {
     setMoving(false)
+    if (!result) return
     window.scrollTo(0, 0)
     animateCSS(wrapper.current, entryAnimation.current || 'fadeInUp')
     entryAnimation.current = null
-  }, [location.pathname, location.search, repository])
+  }, [location.pathname, location.search, result])
   useEffect(() => {
     if (result && Number(requested) !== result.page) history.replace({ pathname: location.pathname, search: result.page > 1 ? `?page=${result.page}` : '' })
   }, [result?.page, requested, history, location.pathname])
@@ -31,9 +33,10 @@ export default function Main({ favorites = false }) {
     history.push({ pathname: location.pathname, search: page > 1 ? `?page=${page}` : '' })
     setMoving(false)
   }
-  return <main className="main-wrapper" ref={wrapper} style={{ '--animate-duration': '.4s' }}>
-    {!repository && <div className="catalog-state" role="status">{error ? <><p>Не удалось загрузить сохранённый каталог.</p><button onClick={retry}>Повторить</button></> : 'Загрузка фильмов…'}</div>}
-    {repository && !result.total && <div className="notFound" style={{ display: 'block' }} role="status"><div>К сожалению, по данному запросу ничего не найдено :(</div><p>Попробуйте другое название.</p><Link className="home-link" to="/">На главную</Link></div>}
+  return <main className="main-wrapper" ref={wrapper} data-metadata-source={result?.source} style={{ '--animate-duration': '.4s' }}>
+    {(!repository || !result) && <div className="catalog-state" role="status">{error ? <><p>Не удалось загрузить сохранённый каталог.</p><button onClick={retry}>Повторить</button></> : 'Загрузка фильмов…'}</div>}
+    {result?.source === 'saved' && !favorites && <p className="source-note" role="status">Показана сохранённая копия каталога.</p>}
+    {result && !result.total && <div className="notFound" style={{ display: 'block' }} role="status"><div>К сожалению, по данному запросу ничего не найдено :(</div><p>Попробуйте другое название.</p><Link className="home-link" to="/">На главную</Link></div>}
     <div className="cards">{result?.films.map(film => <Card key={film.id} film={film} />)}</div>
     {result?.total > 0 && <>
       <nav className="pageListWrapper" aria-label="Страницы каталога">

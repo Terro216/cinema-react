@@ -1,4 +1,5 @@
-// Pure metadata repository; independent of rendering and the old API schema.
+import { createMetadataRepository } from './metadata.mjs'
+// Pure saved metadata repository; independent of rendering and the old API schema.
 export const PAGE_SIZE = 20
 export const normalize = value => String(value).normalize('NFKC').toLocaleLowerCase('ru').replaceAll('ё', 'е').trim()
 export function createRepository(data) {
@@ -36,6 +37,10 @@ export function loadCatalog({ retry = false } = {}) {
   if (!pending) pending = fetch('/data/catalog.json').then(response => {
     if (!response.ok) throw new Error('Catalog unavailable')
     return response.json()
-  }).then(createRepository)
+  }).then(createRepository).then(async saved => {
+    const repository = createMetadataRepository(saved)
+    repository.genres = await repository.getGenres()
+    return repository
+  })
   return pending
 }

@@ -8,14 +8,14 @@ Original: `master` at `7bcc2e2c2c3b312c94b5991b1cc9e4b1a2b38d42`.
 
 Use Node >=22.12 on big-one. `npm ci && npm run build`; `npm start` or
 `npm run preview -- --port 18177` binds only loopback. Keep all builds, browsers
-and containers on big-one. No API credentials are required to run or build.
+and containers on big-one. The saved fallback needs no API credential. Live metadata uses the existing project key in the optional Git-ignored `.env`; no key enters the browser bundle or image.
 `npm test` validates the actual saved catalog; `npm run test:browser -- <URL> <output>`
 tests the nginx candidate/public site with external requests blocked.
 
 The Dockerfile pins Node and nginx by SHA-256; npm versions are locked.
 Compose runs only this site's nginx: UID nginx, read-only filesystem,
 16 MiB tmpfs, 64 MiB RAM, 0.5 CPU, 64 PIDs, logs 3 x 5 MiB, `/healthz`.
-No host ports, persistent volumes, Docker socket or app credentials.
+No host ports, persistent volumes or Docker socket. The nginx proxy uses the existing `KP_API_KEY` from `.env`. API/poster caching is bounded to 8 MiB in tmpfs and is disposable.
 Caddy discovers only this service's labels on existing `caddy_net`.
 HashRouter keeps original `/#/film/448` links. Catalog page numbers are stored
 inside the hash query so back/forward and reload preserve them.
@@ -26,10 +26,10 @@ Before release record container IDs/StartedAt, Caddy config, current image,
 configuration and a rollback tag. Publish only the approved image, for example:
 
 ```sh
-CINEMA_IMAGE=cinema-react:restored-20261017 docker compose up -d --no-deps --no-build --pull never --wait --wait-timeout 90 web
+CINEMA_IMAGE=cinema-react:live-20261017 docker compose up -d --no-deps --no-build --pull never --wait --wait-timeout 90 web
 ```
 
-Default Compose image is the first restored release. Future updates must record
+Default Compose image is the corrected live-API release. Future updates must record
 an immutable tag/image ID and change the configured image deliberately.
 
 ## Rollback
@@ -55,7 +55,10 @@ its own previous image/config in that release directory.
 This is a reproducible static site. Everything needed is versioned in this
 independent Git repository: source, lockfile, fonts/logo, 265 real movie
 records, 265 local posters, flags and nginx/Compose configuration. There is
-no user state to back up. Restore the published source commit from Git,
+no user state to back up. For live metadata, run `python3 scripts/restore-api-key.py`
+once after cloning: it recovers the same historical key from the original
+Git commit into `.env` (0600), without printing it or overwriting an existing
+file. A build needs no credential; without a key the saved fallback still works. Restore the published source commit from Git,
 `docker compose build` (or `docker load` the saved image archive), create
 `caddy_net` as part of normal server bootstrap, then start only `web`.
 Confirm DNS points to the host and verify HTTPS plus actual browser behavior.
@@ -64,10 +67,11 @@ Cinema is intentionally excluded from the DE app-data Restic profile because
 it has no non-reproducible state. Do not enable paused Yandex timers for it.
 The server production/recovery registries and portal catalog are in their
 existing repositories. No new secrets or recovery key are introduced.
-Current DE copy freshness and the encrypted recovery handoff are recorded
-in RELEASE.md and the server BACKUPS.md. The owner updates the existing
-`Server recovery: DE + big-one` note and downloads the encrypted handoff via
-their local client; that manual step cannot be proved by a server export.
+No separate application backup or recovery export is needed for this release:
+source, the complete fallback collection and the original credential are all
+recoverable from existing Git history. No database, new credential or recovery
+key was introduced. A future rotation to a new private API key should follow
+the normal server secrets policy; that is not part of this release.
 
 ## Saved metadata and old players
 
@@ -83,7 +87,16 @@ To deliberately refresh, run `scripts/snapshot.py` on big-one with an owner's
 API key supplied as `KP_API_KEY` through the environment. It uses at most three
 connections, a resumable external cache and no automatic retries; review the
 new catalog/posters before committing. Never put the key in Vite variables.
-No scheduled API job or runtime API dependency is enabled.
+Live metadata is primary: catalog, search, genres, individual details and
+recommendations use the API through an allowlisted same-origin nginx proxy.
+The proxy validates the upstream TLS chain (depth 5), forwards no visitor
+cookies/auth headers, caches public metadata for ten minutes, and has bounded
+DNS/connect/read timeouts with no upstream retries. The browser deduplicates
+requests, caches successful results and enters a 30-second cooldown on outage.
+Saved real films are used automatically on failure. An explicit retry can
+recover immediately. A missing film does not disable healthy API calls.
+[nginx proxy documentation](https://nginx.org/en/docs/http/ngx_http_proxy_module.html).
+No background job is enabled.
 
 The original player protocols were checked. Yohoho's HTTP script redirected
 the original top-level page to a provider 404; HTTPS returned 403. Pleer had a
