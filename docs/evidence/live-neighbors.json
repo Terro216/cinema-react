@@ -1,0 +1,9 @@
+{
+  "changedContainers": [
+    "server-homepage",
+    "cinema-react"
+  ],
+  "unchangedContainers": 74,
+  "portalAuthPreserved": true,
+  "changedExistingRoutes": []
+}

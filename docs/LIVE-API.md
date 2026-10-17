@@ -31,7 +31,8 @@ Checks on big-one: 12 data/provider tests; 20 live/outage browser scenarios;
 45 desktop/mobile/touch scenarios in the forced-offline mode. Live checks
 exercise real search pagination, an unsaved film, poster, live recommendations,
 missing IDs, touch search during outage, bounded failed requests and recovery.
-[Live candidate evidence](evidence/live-candidate.json).
+[Live candidate evidence](evidence/live-candidate.json), [20 public live checks](evidence/live-public.json),
+[45 public fallback checks](evidence/fallback-public.json). Both public suites passed with zero application errors.
 
 ## Deployment and rollback
 
