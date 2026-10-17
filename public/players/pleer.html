@@ -1,0 +1,4 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Плеер 2</title><style>body{margin:0;font:16px sans-serif;text-align:center}</style><div id="uitools" class="uitools"></div><script>
+const id=new URLSearchParams(location.search).get('id');
+if(/^\d+$/.test(id||'')){const s=document.createElement('script');s.src='https://pleer.videoplayers.club/get_player?w=610&h=370&type=watch&kp_id='+id+'&players=hdvb,apicollaps,videocdn,bazon,alloha,ustore,trailer,torrent&bt_n=Плеер%202';s.onerror=()=>parent.postMessage({cinemaPlayer:'unavailable'},'*');document.body.appendChild(s)}
+</script></html>

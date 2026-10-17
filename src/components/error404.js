@@ -8,7 +8,7 @@ function Error404() {
 			<a
 				className="error404-button"
 				type="button"
-				href="https://terro216.github.io/cinema-react/"
+				href="#/"
 				rel="noreferrer">
 				На главную
 			</a>

@@ -1,0 +1,4 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Плеер 1</title><style>body{margin:0;font:16px sans-serif;text-align:center}#yohoho{width:100%;height:380px}</style><div id="yohoho"></div><script>
+const id=new URLSearchParams(location.search).get('id');
+if(/^\d+$/.test(id||'')){document.getElementById('yohoho').dataset.kinopoisk=id;const s=document.createElement('script');s.src='https://yohoho.cc/yo.js';s.onerror=()=>parent.postMessage({cinemaPlayer:'unavailable'},'*');document.body.appendChild(s)}
+</script></html>

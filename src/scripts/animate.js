@@ -1,19 +1,18 @@
-const animateCSS = (element, animation, prefix = "animate__") =>
-	// We create a Promise and return it
-	new Promise((resolve, reject) => {
-		const animationName = `${prefix}${animation}`
-		const node = document.querySelector(element)
-
-		node.classList.add(`${prefix}animated`, animationName)
-
-		// When the animation ends, we clean the classes and resolve the Promise
-		function handleAnimationEnd(event) {
-			event.stopPropagation()
-			node.classList.remove(`${prefix}animated`, animationName)
-			resolve("Animation ended")
-		}
-
-		node.addEventListener("animationend", handleAnimationEnd, { once: true })
-	})
-
-export default animateCSS
+// Always finishes, including detached nodes and reduced-motion preferences.
+export default function animateCSS(element, animation, prefix = 'animate__') {
+  const node = typeof element === 'string' ? document.querySelector(element) : element
+  if (!node || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return Promise.resolve()
+  return new Promise(resolve => {
+    const name = `${prefix}${animation}`
+    const finish = event => {
+      if (event && event.target !== node) return
+      clearTimeout(timeout)
+      node.removeEventListener('animationend', finish)
+      node.classList.remove(`${prefix}animated`, name)
+      resolve()
+    }
+    const timeout = setTimeout(finish, 1200)
+    node.addEventListener('animationend', finish)
+    node.classList.add(`${prefix}animated`, name)
+  })
+}

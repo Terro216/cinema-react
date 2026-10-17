@@ -1,46 +1,29 @@
 {
-	"name": "cinema-react",
-	"version": "1.9.5",
-	"private": true,
-	"homepage": "https://terro216.github.io/cinema-react/",
-	"dependencies": {
-		"@testing-library/jest-dom": "^5.11.9",
-		"@testing-library/react": "^11.2.5",
-		"@testing-library/user-event": "^12.8.1",
-		"animate.css": "^4.1.1",
-		"gh-pages": "^3.1.0",
-		"node-sass": "^5.0.0",
-		"parallax-js": "^3.1.0",
-		"react": "^17.0.1",
-		"react-dom": "^17.0.1",
-		"react-router-dom": "^5.2.0",
-		"react-scripts": "4.0.3",
-		"web-vitals": "^1.1.0"
-	},
-	"scripts": {
-		"predeploy": "npm run build",
-		"deploy": "gh-pages -b view -d build",
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test"
-	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest"
-		]
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
-	},
-	"devDependencies": {}
+  "name": "cinema-react",
+  "version": "1.9.6",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "node scripts/browser.mjs",
+    "snapshot": "python3 scripts/snapshot.py"
+  },
+  "dependencies": {
+    "animate.css": "4.1.1",
+    "parallax-js": "3.1.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-router-dom": "5.3.4"
+  },
+  "devDependencies": {
+    "vite": "7.3.7",
+    "sass": "1.105.2",
+    "playwright": "1.63.0"
+  }
 }

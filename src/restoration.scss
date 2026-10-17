@@ -1,0 +1,46 @@
+// Targeted repairs; the original SCSS files and design tokens stay intact.
+.App { min-height: 100vh; }
+.footer-wrapper { display: flex; }
+.card { max-height: none; }
+.card .imgWrapper img { height: auto; display: block; }
+.card a { width: 100%; }
+.header-wrapper .searchButton, .headerMob-wrapper .mobSearchButton { font: inherit; border: 0; cursor: pointer; }
+.header-wrapper .searchButton { font-size: 1.4em; }
+.catalog-state { text-align: center; padding: 4% 2%; box-sizing: border-box; }
+.home-link { text-decoration: underline; }
+.page-counter { text-align: center; color: #52586e; }
+.players { text-align: center; padding: 2% 0; }
+.player-controls { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1em; }
+.player-controls button { background: #428bca; color: white; border: 1px solid black; border-radius: 6px; padding: .6em 1em; cursor: pointer; font: inherit; }
+.player-controls a { text-decoration: underline; }
+.players p { padding: 0 1em; }
+.players iframe { width: 100%; height: 420px; border: 0; }
+.film-wrapper .similar-wrapper .similar-content .card { height: auto; margin-bottom: 1em; }
+.film-wrapper .similar-wrapper .similar-content { align-items: flex-start; row-gap: 1.5em; }
+.film-wrapper .filmHeader .filmGenre { gap: .4em; flex-wrap: wrap; }
+.film-wrapper .filmHeader .filmGenre .labelOut { flex: 1 1 100px; }
+.film-wrapper .factsInfo { font: inherit; color: inherit; }
+.flags { gap: .4em; }
+:focus-visible { outline: 2px solid #c67738; outline-offset: 3px; }
+@media (max-width: 550px) {
+  .App { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr auto; grid-template-areas: "header" "main" "footer"; }
+  .headerMob-wrapper { grid-area: header; display: block; }
+  .headerMob-wrapper .headerMob { width: 100%; box-sizing: border-box; }
+  .headerMob-wrapper .hamburger-icon { background: transparent; border: 0; padding: 0; }
+  .headerMob-wrapper .hamburger-links.is-open { display: flex; position: absolute; top: 70px; height: 190px; padding-top: 0; box-sizing: border-box; z-index: 4; }
+  .headerMob-wrapper .hamburger-links .mobSearch { padding: 1em 10%; max-height: none; }
+  .headerMob-wrapper .hamburger-links .mobSearchBar { box-sizing: border-box; }
+  .sidebar-wrapper.is-open { display: block; top: 260px; padding-top: 0; z-index: 4; box-sizing: border-box; }
+  .menu-open .main-wrapper, .menu-open .film-wrapper { visibility: hidden; }
+  .main-wrapper .cards { width: 100%; }
+  .main-wrapper .notFound { box-sizing: border-box; padding: 12% 4%; }
+  .pageListWrapper { gap: .2em; }
+  .main-wrapper .pageListWrapper .pageListButton { font-size: 1em; }
+  .film-wrapper .filmHeader .poster-wrapper { margin-bottom: 12%; }
+  .film-wrapper .controls { width: 96%; }
+  .film-wrapper .controls .controls-home { display: flex; align-items: center; justify-content: center; }
+  .film-wrapper .filmName { font-size: 1.8em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

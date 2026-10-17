@@ -1,0 +1,36 @@
+name: cinema-react
+services:
+  web:
+    build:
+      context: .
+      args:
+        SOURCE_REVISION: ${CINEMA_REVISION:-unknown}
+    image: ${CINEMA_IMAGE:-cinema-react:restored-20261017}
+    container_name: cinema-react
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 64M
+    cpus: 0.5
+    pids_limit: 64
+    expose: ["8080"]
+    networks: [caddy_net]
+    labels:
+      caddy: cinema.ilyamedve.dev
+      caddy.reverse_proxy: "{{upstreams 8080}}"
+      caddy.encode: zstd gzip
+    healthcheck:
+      test: [CMD, wget, --quiet, --tries=1, --spider, http://127.0.0.1:8080/healthz]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: json-file
+      options: {max-size: 5m, max-file: "3"}
+networks:
+  caddy_net:
+    external: true

@@ -7,7 +7,7 @@ function Footer() {
 			<span>&copy; 2021-2022</span>
 			<span>
 				made by{" "}
-				<a href="https://ilyamed.site/" target="_blank" rel="noreferrer">
+				<a href="https://ilyamedve.dev/" target="_blank" rel="noreferrer">
 					i l y a m e d
 				</a>
 			</span>

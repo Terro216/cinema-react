@@ -1,53 +1,31 @@
-<h1 align="center">Welcome to React Movie Theater 👋</h1>
-<p>
-</p>
+# CINEMA
 
-> Free online movie theater based on react+scss stack
+A careful restoration of my 2021–2022 React movie theater.
 
-### 🏠 [Homepage](https://terro216.github.io/cinema-react/)
+**[Open Cinema](https://cinema.ilyamedve.dev/)**
 
-## Screenshots
-<details><summary>PC version</summary>
-<img src="screenshots/main.jpg" width="45%"></img>
-<img src="screenshots/forest.jpg" width="45%"></img>
-</details>
-<details><summary>Mobile version</summary>
-<img src="screenshots/mainMob.jpg" width="45%"></img>
-<img src="screenshots/forestMob.jpg" width="45%"></img>
-</details>
+Original React 17 / HashRouter interface, fonts, cards, colors, animate.css
+transitions and parallax-js poster movement are preserved. The build now uses
+Vite and Dart Sass with a lockfile and pinned Docker bases.
 
-## Features
-You can:
-- View the top 250 best films list
-- Find a movie by keyword
-- Watch the best movies by a popular genres
-- Literraly watch any film and read his description and interesting facts
-
-## Install
-
-Copy the repository and
+265 real films (Top 250 plus the old personal list), posters, descriptions,
+ratings, facts and flags are included in the repository. Catalog, search,
+genres, pagination and recommendations work without the legacy API.
+External movie players are currently unavailable; their optional integrations
+are isolated from the rest of the site.
 
 ```sh
-npm install
-```
-
-## Usage
-
-```sh
+npm ci
 npm start
+npm test
+npm run build
 ```
 
-## Author
+Use Node >=22.12. In the server tree these commands run on big-one via shims.
 
-🦔 **ilya med**
+[Restoration baseline](docs/RESTORATION.md) · [Deployment, rollback, recovery](docs/DEPLOYMENT.md) · [Release evidence](docs/RELEASE.md)
 
-* Website: [ilyamed.site](https://ilyamed.site/)
-* Github: [@Terro216](https://github.com/Terro216)
+Original screenshots remain in `screenshots/`. Original source commit:
+`7bcc2e2c2c3b312c94b5991b1cc9e4b1a2b38d42`.
 
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/Terro216/cinema-react/issues). 
-
-## Show your support
-
-Give a ⭐️ if you liked this project!
+Author: [Ilya Medvedev](https://github.com/Terro216)
