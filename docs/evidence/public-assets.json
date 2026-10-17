@@ -1,0 +1,13 @@
+{
+  "publicAssets": 296,
+  "posters": 265,
+  "bytes": 16155285,
+  "apiKeyInBundle": false,
+  "imageId": "sha256:852d23e5231f4c1bead13c17eac5e9251895fbb975e5e80ff7e7e042ec4cc7de",
+  "health": "healthy",
+  "restarts": 0,
+  "memoryLimit": 67108864,
+  "nanoCPUs": 500000000,
+  "readOnly": true,
+  "ports": {}
+}

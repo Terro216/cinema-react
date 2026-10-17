@@ -17,8 +17,14 @@ def command(*args):
     return subprocess.check_output(args)
 
 names = command('docker', 'ps', '--format', '{{.Names}}').decode().splitlines()
-containers = json.loads(command('docker', 'inspect', *names))
+inspected = subprocess.run(['docker', 'inspect', *names], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+# Another release may remove a temporary QA container between ps and inspect.
+# Docker still returns valid JSON for the other containers in this case.
+containers = json.loads(inspected.stdout)
+if not containers:
+    raise RuntimeError('No container metadata available')
 result = {'observedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'containers': {}}
+result['vanishedDuringInspection'] = sorted(set(names) - {c['Name'].lstrip('/') for c in containers})
 for c in containers:
     result['containers'][c['Name'].lstrip('/')] = {
         'id': c['Id'], 'image': c['Image'], 'startedAt': c['State']['StartedAt'],

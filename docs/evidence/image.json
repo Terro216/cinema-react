@@ -1,0 +1,10 @@
+{
+  "imageId": "sha256:852d23e5231f4c1bead13c17eac5e9251895fbb975e5e80ff7e7e042ec4cc7de",
+  "repoDigests": [
+    "cinema-react@sha256:852d23e5231f4c1bead13c17eac5e9251895fbb975e5e80ff7e7e042ec4cc7de"
+  ],
+  "sourceRevision": "f86dcba4b036bfa93cc407ec6a1841df4a3d8b98",
+  "staticFiles": 312,
+  "staticManifestSha256": "27a3dcbe95c037677c16c0acc3f4d2967f9a0f96f2f80e21c672624fa5d648f5",
+  "candidateMatchesRelease": true
+}

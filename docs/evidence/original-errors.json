@@ -1,0 +1,22 @@
+{
+  "errors": [],
+  "players": [
+    {
+      "url": "http://yohoho.cc/yo.js",
+      "status": 200
+    },
+    {
+      "url": "http://pleer.videoplayers.club/get_player",
+      "failure": "net::ERR_NAME_NOT_RESOLVED"
+    },
+    {
+      "url": "https://yohoho.cc/jsjumptopage",
+      "status": 404
+    }
+  ],
+  "originalCards": 20,
+  "filmUrl": "https://yohoho.cc/jsjumptopage",
+  "failedFilmUrl": "http://127.0.0.1:18176/127.0.0.1",
+  "failedFilmText": "404",
+  "failedCatalogRequestsIn700ms": 85
+}

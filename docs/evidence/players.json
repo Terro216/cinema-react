@@ -1,0 +1,13 @@
+{
+  "providers": [
+    {
+      "provider": "yohoho.cc",
+      "status": 200
+    },
+    {
+      "provider": "pleer.videoplayers.club",
+      "error": "net::ERR_NAME_NOT_RESOLVED"
+    }
+  ],
+  "parentNavigationBlocked": true
+}
