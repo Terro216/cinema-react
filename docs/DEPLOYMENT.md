@@ -1,7 +1,7 @@
 # Cinema: deployment and recovery
 
 Public URL: https://cinema.ilyamedve.dev/
-Source: https://github.com/Terro216/cinema-react (restoration branch recorded in RELEASE.md).
+Source: https://github.com/Terro216/cinema-react, branch `master`.
 Original: `master` at `7bcc2e2c2c3b312c94b5991b1cc9e4b1a2b38d42`.
 
 ## Run and update
@@ -26,7 +26,7 @@ Before release record container IDs/StartedAt, Caddy config, current image,
 configuration and a rollback tag. Publish only the approved image, for example:
 
 ```sh
-CINEMA_IMAGE=cinema-react:live-20261017 docker compose up -d --no-deps --no-build --pull never --wait --wait-timeout 90 web
+CINEMA_IMAGE=cinema-react:mobile-20261018 docker compose up -d --no-deps --no-build --pull never --wait --wait-timeout 90 web
 ```
 
 Default Compose image is the corrected live-API release. Future updates must record
@@ -38,17 +38,19 @@ There was no Cinema deployment before this restoration. To withdraw this first
 publication, `docker compose stop web` from this directory removes its dynamic
 Caddy route; do not stop Caddy or run a stack-wide down/restart.
 
-The accepted first image is retained as `cinema-react:rollback-restored-20261017`.
+The preceding live-API image is retained as `cinema-react:rollback-20261018`.
 For a later regression:
 
 ```sh
-CINEMA_IMAGE=cinema-react:rollback-restored-20261017 docker compose up -d --no-deps --no-build --pull never --wait --wait-timeout 90 web
+CINEMA_IMAGE=cinema-react:rollback-20261018 docker compose up -d --no-deps --no-build --pull never --wait --wait-timeout 90 web
 ```
 
 Then repeat public `/healthz`, catalog/search, direct film and mobile checks.
-Release evidence and image archives live on big-one in
-`/home/me/.local/state/cinema-react-releases/`. The portal catalog update has
-its own previous image/config in that release directory.
+Keep only the running image and one preceding production image on big-one.
+Old source/image TARs, Git bundles, build outputs and temporary QA directories
+are disposable; the historical paths in release reports are not recovery inputs.
+The server's `docs/restored-services-2026-10-18.json` records this maintenance release.
+The portal has its own current and rollback images.
 
 ## Restore from loss of host
 
@@ -59,7 +61,7 @@ no user state to back up. For live metadata, run `python3 scripts/restore-api-ke
 once after cloning: it recovers the same historical key from the original
 Git commit into `.env` (0600), without printing it or overwriting an existing
 file. A build needs no credential; without a key the saved fallback still works. Restore the published source commit from Git,
-`docker compose build` (or `docker load` the saved image archive), create
+`docker compose build`, create
 `caddy_net` as part of normal server bootstrap, then start only `web`.
 Confirm DNS points to the host and verify HTTPS plus actual browser behavior.
 

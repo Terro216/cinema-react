@@ -5,7 +5,7 @@ services:
       context: .
       args:
         SOURCE_REVISION: ${CINEMA_REVISION:-unknown}
-    image: ${CINEMA_IMAGE:-cinema-react:live-20261017}
+    image: ${CINEMA_IMAGE:-cinema-react:mobile-20261018}
     env_file:
       - path: .env
         required: false

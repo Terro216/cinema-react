@@ -21,7 +21,7 @@
 .film-wrapper .filmHeader .filmGenre { gap: .4em; flex-wrap: wrap; }
 .film-wrapper .filmHeader .filmGenre .labelOut { flex: 1 1 100px; }
 .film-wrapper .factsInfo { font: inherit; color: inherit; }
-.flags { gap: .4em; }
+.flags { gap: .4em; max-width: 100%; flex-wrap: wrap; }
 :focus-visible { outline: 2px solid #c67738; outline-offset: 3px; }
 @media (max-width: 550px) {
   .App { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr auto; grid-template-areas: "header" "main" "footer"; }

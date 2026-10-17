@@ -36,14 +36,16 @@ missing IDs, touch search during outage, bounded failed requests and recovery.
 
 ## Deployment and rollback
 
-Current image: `cinema-react:live-20261017`.
-Source/image identity and public acceptance are recorded alongside this report
-in `docs/evidence/live-image.json` and `docs/evidence/live-public.json`.
-The prior fully saved release is retained as
-`cinema-react:rollback-restored-20261017`. To return to it:
+Current image: `cinema-react:mobile-20261018`. The 18 October maintenance release
+wraps long country/flag rows within the mobile viewport; the API behavior is unchanged.
+The original 17 October API release is recorded in `docs/evidence/live-image.json`
+and `docs/evidence/live-public.json`. The maintenance image and checks are recorded
+in the server repository at `docs/restored-services-2026-10-18.json`.
+The preceding live-API release is retained as
+`cinema-react:rollback-20261018`. To return to it:
 
 ```sh
-CINEMA_IMAGE=cinema-react:rollback-restored-20261017 docker compose up -d --no-deps --no-build --pull never --wait --wait-timeout 90 web
+CINEMA_IMAGE=cinema-react:rollback-20261018 docker compose up -d --no-deps --no-build --pull never --wait --wait-timeout 90 web
 ```
 
 Only `cinema-react/web` is replaced. Caddy and neighboring services are not restarted.
