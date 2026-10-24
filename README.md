@@ -32,3 +32,10 @@ Original screenshots remain in `screenshots/`. Original source commit:
 `7bcc2e2c2c3b312c94b5991b1cc9e4b1a2b38d42`.
 
 Author: [Ilya Medvedev](https://github.com/Terro216)
+
+## Аналитика посещений
+
+Plausible на `analytics.ilyamedve.dev` считает просмотры публичных страниц.
+Счётчик включается на `cinema.ilyamedve.dev`; локальные проверки его не загружают.
+Query-параметры, hash и значения полей форм не передаются; коды комнат
+заменяются на `:code`. Новых секретов и отдельных баз данных нет.
