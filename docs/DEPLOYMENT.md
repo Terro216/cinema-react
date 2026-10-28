@@ -8,14 +8,14 @@ Original: `master` at `7bcc2e2c2c3b312c94b5991b1cc9e4b1a2b38d42`.
 
 Use Node >=22.12 on big-one. `npm ci && npm run build`; `npm start` or
 `npm run preview -- --port 18177` binds only loopback. Keep all builds, browsers
-and containers on big-one. The saved fallback needs no API credential. Live metadata uses the existing project key in the optional Git-ignored `.env`; no key enters the browser bundle or image.
+and containers on big-one. The saved fallback needs no API credential. Live metadata uses a separately supplied key in the optional Git-ignored `.env`; no key enters the browser bundle or image.
 `npm test` validates the actual saved catalog; `npm run test:browser -- <URL> <output>`
 tests the nginx candidate/public site with external requests blocked.
 
 The Dockerfile pins Node and nginx by SHA-256; npm versions are locked.
 Compose runs only this site's nginx: UID nginx, read-only filesystem,
 16 MiB tmpfs, 64 MiB RAM, 0.5 CPU, 64 PIDs, logs 3 x 5 MiB, `/healthz`.
-No host ports, persistent volumes or Docker socket. The nginx proxy uses the existing `KP_API_KEY` from `.env`. API/poster caching is bounded to 8 MiB in tmpfs and is disposable.
+No host ports, persistent volumes or Docker socket. The nginx proxy uses an optional `KP_API_KEY` from `.env`. API/poster caching is bounded to 8 MiB in tmpfs and is disposable.
 Caddy discovers only this service's labels on existing `caddy_net`.
 HashRouter keeps original `/#/film/448` links. Catalog page numbers are stored
 inside the hash query so back/forward and reload preserve them.
@@ -54,26 +54,15 @@ The portal has its own current and rollback images.
 
 ## Restore from loss of host
 
-This is a reproducible static site. Everything needed is versioned in this
-independent Git repository: source, lockfile, fonts/logo, 265 real movie
-records, 265 local posters, flags and nginx/Compose configuration. There is
-no user state to back up. For live metadata, run `python3 scripts/restore-api-key.py`
-once after cloning: it recovers the same historical key from the original
-Git commit into `.env` (0600), without printing it or overwriting an existing
-file. A build needs no credential; without a key the saved fallback still works. Restore the published source commit from Git,
-`docker compose build`, create
-`caddy_net` as part of normal server bootstrap, then start only `web`.
-Confirm DNS points to the host and verify HTTPS plus actual browser behavior.
+This is a reproducible static site. Source, lockfile, fonts/logo, 265 saved
+movie records, posters, flags and nginx/Compose configuration are in Git.
+Build the image and start the web service using the documented Compose file.
+Verify HTTPS and browser behavior after restoration.
 
-Cinema is intentionally excluded from the DE app-data Restic profile because
-it has no non-reproducible state. Do not enable paused Yandex timers for it.
-The server production/recovery registries and portal catalog are in their
-existing repositories. No new secrets or recovery key are introduced.
-No separate application backup or recovery export is needed for this release:
-source, the complete fallback collection and the original credential are all
-recoverable from existing Git history. No database, new credential or recovery
-key was introduced. A future rotation to a new private API key should follow
-the normal server secrets policy; that is not part of this release.
+The saved catalog needs no API key and no application-data backup. Live
+metadata is optional: provision a separate provider key in an ignored local
+`.env` following [credential setup](CREDENTIALS.md). Never recover a credential
+from Git history. The previous historical key has been removed from Git.
 
 ## Saved metadata and old players
 

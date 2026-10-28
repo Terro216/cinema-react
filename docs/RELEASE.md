@@ -115,10 +115,9 @@ No persistent app data or new secrets. Recovery from the remote Git branch and
 pinned image is sufficient; Cinema is intentionally excluded from DE app-data
 Restic. Active DE receipts verified: 17 October 16:48–16:49 UTC, 8 snapshots,
 199,779,818 bytes, data_check/restore_verify/result all OK. Paused Yandex jobs
-were not enabled. No separate app-data backup or fresh recovery export is required: the same
-historical API credential is recoverable from the original Git commit. There
-is no new credential or application state. The earlier request for a common
-recovery export was unnecessary and is withdrawn.
+were not enabled. The saved catalog needs no application-data backup. Credential handling has
+since changed: the exposed key was removed from Git. For optional live metadata,
+follow [credential setup](CREDENTIALS.md) with a separately provisioned key.
 
 The saved catalog is finite and ratings are a snapshot. Films outside it show
 an informative message; updates are deliberate, not scheduled. Playback is

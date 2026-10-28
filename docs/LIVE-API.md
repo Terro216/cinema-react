@@ -13,9 +13,9 @@ provider. It is now an automatic, complete fallback during API failure. The
 original visual design, animation and parallax remain. A brief saved-copy note
 explains the reduced catalog during an outage; no fake titles/posters are used.
 
-The browser sends same-origin requests to an allowlisted nginx proxy. The old
-project credential is reused from an ignored `.env`, and is not in the frontend
-bundle or image. Nginx verifies the upstream certificate and supports its full
+The browser sends same-origin requests to an allowlisted nginx proxy. An
+optional, separately supplied credential is read from an ignored `.env` and
+is not included in the frontend bundle or image. Nginx verifies the upstream certificate and supports its full
 current Let's Encrypt chain (verification depth 5), bounds DNS/connect/read
 waits and retries no upstream requests. API responses are cached in disposable,
 size-limited tmpfs for ten minutes. No visitor cookies or auth headers go to
@@ -51,15 +51,12 @@ CINEMA_IMAGE=cinema-react:rollback-20261018 docker compose up -d --no-deps --no-
 Only `cinema-react/web` is replaced. Caddy and neighboring services are not restarted.
 [Full deployment instructions](DEPLOYMENT.md).
 
-## Git is sufficient for recovery
+## Recovery and credentials
 
-No database, server user state, persistent volume or new credential is added.
-The source, saved films/posters/fonts, lockfile and configuration are all in Git.
-The existing historical API key can be restored from the original Git commit
-with `python3 scripts/restore-api-key.py`; it never overwrites an existing `.env`.
-Without a key, the saved fallback still works. No separate app-data backup,
-new recovery export or Bitwarden update is required for this release. The earlier
-request for such an export was unnecessary and is withdrawn. A local rollback
-image is a release convenience, not a new backup system.
+The saved films/posters/fonts, source, lockfile and configuration are in Git.
+The saved catalog works without an API key and has no server-side user state.
+Live metadata requires a separately provisioned key; see
+[credential setup](CREDENTIALS.md). The old key and the history-recovery
+script have been removed. Never retrieve credentials from old commits.
 
 Old external video providers remain isolated; no working playback is asserted.

@@ -27,3 +27,7 @@ yarn-error.log*
 /.env
 /test-results
 /playwright-report
+
+# Local credentials; keep only the empty example in Git.
+/.env*
+!/.env.example

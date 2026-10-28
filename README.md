@@ -12,8 +12,8 @@ Vite and Dart Sass with a lockfile and pinned Docker bases.
 ratings, facts and flags are included in the repository. Catalog, search,
 genres, pagination and recommendations use live metadata, with this complete
 saved collection as an automatic fallback during API outages.
-The existing API key is used only by an allowlisted nginx proxy; it is absent
-from the browser bundle. No application database or data backup is needed.
+An optional server-side API key is read only by an allowlisted nginx proxy;
+keys are never included in the browser bundle. See [credential setup](docs/CREDENTIALS.md). No application database or data backup is needed.
 External movie players are currently unavailable; their optional integrations
 are isolated from the rest of the site.
 
