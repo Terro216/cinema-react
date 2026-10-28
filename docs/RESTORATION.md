@@ -2,7 +2,7 @@
 
 Original branch: `master`.
 Original revision: `7bcc2e2c2c3b312c94b5991b1cc9e4b1a2b38d42`
-(2022-02-14, `fix redirect`). Full original Git history is retained.
+(2022-02-14, `fix redirect`). The historical layout is retained; credentials have been removed from Git history.
 
 Preservation baseline: original `src/**/*.scss`, fonts, logo, reference images
 in `screenshots/`, animate.css 4 and parallax-js 3. React 17 and HashRouter 5
